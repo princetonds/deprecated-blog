@@ -1,0 +1,26 @@
+# Dependencies
+markdown:            redcarpet
+highlighter:         pygments
+
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
+
+# Setup
+title:               Princeton Data Science 
+tagline:             'Blog'
+description:         'We hope to create a community of students interested in data science careers, and to provide opportunities to sharpen data-oriented skills.'
+url:                 http://www.princeton.edu/~datasci/
+baseurl:             /
+paginate:            5
+
+# About/contact
+author:
+  name:              Francine Camacho 
+  url:               frcamacho@github.io
+  email:             datasci@princeton.edu
+
+# Custom vars
+version:             1.0.0
