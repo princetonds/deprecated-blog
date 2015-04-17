@@ -4,7 +4,20 @@ title: Members
 ---
 
 <p class="message">
-  Hey there! We are a new student organization founded in Fall 2014 by three data junkies at Princeton who saw the need for a group dedicated to data science and machine learning. 
+  
   </p>
+<div style="width:100%;height:150px;margin-bottom:10px;">
+	<img style="float:left;width:150px;height:150px" src="Camacho.jpg">
+	<div style="float:left;">
+		<h1>Francine Camacho</h1>
+		<h4>Graduate Student</h4>
+	</div>
+</div>
 
-Check out our [website](http://www.princeton.edu/~datasci/index.html) to check out our events! 
+<div style="width:100%;height:150px;margin-bottom:10px;">
+	<img style="float:left;width:150px;height:150px" src="Zhou.jpg">
+	<div style="float:left;">
+		<h1>Eddie Zhou</h1>
+		<h4>Junior</h4>
+	</div>
+</div>
