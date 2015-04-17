@@ -2,10 +2,6 @@
 layout: page
 title: Members
 ---
-
-<p class="message">
-  
-  </p>
 <div style="width:100%;height:150px;margin-bottom:10px;">
 	<img style="float:left;width:150px;height:150px" src="{{ site.baseurl }}Camacho.jpg">
 	<div style="float:left;">
