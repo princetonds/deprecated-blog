@@ -8,6 +8,7 @@ title: Members
 	<div style="float:left; PADDING-LEFT:10px">
 		<h1>Francine Camacho</h1>
 		<h4>#Gradstudent #QCB #compBio </h4>
+		<a href="https://github.com/frcamacho" target="_blank">@frcamacho</a>
 	</div>
 </div>
 
