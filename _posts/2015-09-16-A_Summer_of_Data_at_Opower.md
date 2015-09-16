@@ -1,7 +1,7 @@
 
 ---
 layout: post
-title: DataSci Blog: A Summer of Data at Opower
+title:  A Summer of Data at Opower
 ---
 
 ![alt text](http://princeton-data-science.github.io.github.io/blog_pictures/Matilin_Anna/anna1.png)
