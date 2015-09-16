@@ -22,8 +22,8 @@ When I accepted the offer to work at Opower, it was mid-January and I had just f
 
 ###**Location**San Francisco, tech capital of the world. I had been to SF before for 5 days through an amazing program called [Square College Code Camp for women in engineering] (https://squareup.com/code-camp/college, <span style="color:green">APPLY!!!</span>) but I had done little sightseeing and I didn’t feel like I knew the city at all. My first big challenge before starting was finding a place to live, which required me to learn all the neighborhoods and their respective vibes. The Opower office was in South of Market (SOMA), a neighborhood densely packed with startup offices. I knew that I wanted to live in the Mission, which is full of energy and young professionals. However, the Mission is also the ultimate example of skyrocketing [SF rent and gentrification] (http://www.nytimes.com/2015/05/23/us/high-rents-elbow-latinos-from-san-franciscos-mission-district.html). It took me months of searching, but I finally managed to find an apartment that I could afford. Last summer, I stayed in NJ, so living on my own on the other side of the country was an exciting prospect!
 
-<div style="float:middle;width:50%;height:50%;margin-bottom:10px;">
-	<center><img style="text-align:center;width:50%;height:50%" src="{{ site.baseurl }}anna3.jpg"></center>
+<div style="float:middle;width:50%;height:50%;margin-left:auto;margin-right:auto;">
+	<center><img style="text-align:right;width:50%;height:50%" src="{{ site.baseurl }}anna3.jpg"></center>
 </div>
 
 <p>I believe that a summer in SF is really what you make of it. My friends and I took full advantage of what the city and the Bay Area had to offer: outings to Dolores Park, free concerts, Muir Woods, Yosemite, Lake Tahoe, food festivals, visits to Berkeley and Stanford, Sunday evenings on the beach, and numerous free events for tech interns (dinner was often free through one event or another). There are endless ways to meet new, extremely interesting people. I made a point of walking to places whenever I could so that, by the end, I felt like I could find my way anywhere.</p>
