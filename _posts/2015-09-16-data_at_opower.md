@@ -12,8 +12,8 @@ title: A Summer of Data at Opower
 
 <p>I finished my summer internship at Opower a few weeks ago, where I was an engineering intern on the Data Science team. Opower is a tech company that works with utilities to encourage consumers to save energy through behavioral science. Its headquarters are in Arlington, Virginia, where there about 400 employees, and the second office is located in San Francisco, where there are about 200. Opower filed for an IPO in 2014, so I would call it a small-midsize company as opposed to a startup. </p>
 
-<div style="float:middle;width:100%;height:100%;margin-bottom:10px;">
-	<img style="middle;width:50%;height:50%" src="{{ site.baseurl }}anna2.jpg">
+<div style="float:middle;width:100%;height:100%;margin-left:auto; margin-right:auto;">
+	<center><img style="middle;width:50%;height:50%" src="{{ site.baseurl }}anna2.jpg"></center>
 </div>
 
 When I accepted the offer to work at Opower, it was mid-January and I had just finished taking my last final. I had applied to a program called [KPCB Fellows](http://kpcbfellows.com/), 
@@ -34,7 +34,7 @@ When I accepted the offer to work at Opower, it was mid-January and I had just f
 	<img style="middle;width:100%;height:100%" src="{{ site.baseurl }}anna4.jpg">	
 <p><em>(Source: KPCB Fellows Program)</em></p>
 </div>
----<div style="middle;width:70%;height:70%;margin-bottom:10px;vertical-align: middle">
-	<img style="middle;width:50%;height:50%" src="{{ site.baseurl }}anna5.jpg">
+---<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
+	<center><img style="middle;width:50%;height:50%" src="{{ site.baseurl }}anna5.jpg"></center>
 </div>
 <p>Honestly, my experience as a data science intern day-to-day was very similar to that of a software engineering intern. The tools we use are perhaps a bit different, though often the same. Also, I’m sure that there are different kinds of data science internships in SF- some that are more academic and mathy, and some that are more like mine. I did do some math at times, but it wasn’t like my mentor and I spent weeks deciding what models to use, or developing new ones. </p><p>I still think data science is cool even after a summer of working in it, so that seems to be a good sign. There is a lot of muck and cleaning, but my favorite part is the search for some golden nugget of insight. When I finally get a meaningful coefficient as an output, or better yet, find a graph that just instantly grabs people with its visual story, that is when I feel that data science is the coolest industry out there. Until next time, Princeton Data Science!</p>---If you have any questions for me about Princeton DataSci or data science in the Bay Area, feel free to shoot me an email at <mailto:amatlin@princeton.edu>.
