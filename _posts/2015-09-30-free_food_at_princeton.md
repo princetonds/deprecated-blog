@@ -37,7 +37,7 @@ That glorious day was Dec 10, 2014, a Wednesday. Perhaps more emails are sent ou
 ```{r}
 > # split data frame to list of data frames by day of week> day.of.week = split(data, weekdays(data$date))>> # order list Sunday, Monday, ... Saturday> dow = c('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')> day.of.week = day.of.week[dow]>> # create table for number of emails sent and total number of days> emails = sapply(day.of.week, nrow)> days   = table(weekdays(school.days))> days   = days[dow]>> barplot(emails / days, main = 'Avg # emails each day of week')```
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}avg_emails_free_food.jpg"></center>
+	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}"avg_emails_free_food.jpg"></center>
 </div>
 
 To see whether these differences in average emails are significant or are just noise, we need to draw some confidence intervals. We’ll start by making some assumptions:1.	For each day of the week D, the numbers of emails $X^{(D)}_1, X^{(D)}_2,....,X^{(D)}_{nD}$ sent on that day all follow the same probability distribution with mean μD and standard deviation σD.2.	The number of emails sent on any day does not depend on the numbers of emails sent on any past daysTaken together, these are the *independent(2) and identically distributed (1)* assumptions on data that ~ 90% of statistical techniques rely on. This page gives another succinct explanation of [independent, identically distributed] (http://math.stackexchange.com/questions/466927/independent-identically-distributed-iid-random-variables) random variables.
@@ -57,12 +57,12 @@ $$ E[(X^{(D)}-µ_D)^2]$$
 converges to $\sigma D^2$. Now we’re ready to add error bars to the plot.
 ```{r}> # create a function to compute standard error for a> # set of emails sent on a particular day> compute.se = function(df)> {>   dow = unique(weekdays(df$date))>   stopifnot(length(dow) == 1)>   >   days = school.days[weekdays(school.days) == dow]>   n = length(days)>   >   count = rep(0, length(days))>   names(count) = days>   count[names(table(df$date))] = table(df$date)>   >   return( sd(count) / sqrt(n) )  > }>> se = sapply(day.of.week, compute.se)>> # barplot( ) returns horizontal position of the days> x  = barplot(emails / days, main = 'Avg # emails each day of week', ylim = c(0, 5))> arrows(x, emails / days + se, x, emails / days - se, angle = 90, code = 3, length = 0.1)```
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}avg_emails.jpg"></center>
+	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}"avg_emails.jpg"></center>
 </div>
 
 <p>Since Friday’s 68% confidence interval doesn’t overlap with that of any other day of the week, we can safely say emails are sent out more frequently on Fridays. On the other hand the Sunday, Wednesday, Thursday, Saturday intervals overlap by a lot, so the corresponding population means are likely not that different.</p><p>What about time of day?</p>```{r}> hist(data$hour, breaks = seq(-0.5, 23.5, 1), xlab = 'Hour of day', freq = F,>      main = 'Free food emails by hour of day', ylab = 'Proportion of emails', xaxt = 'n')> axis(side = 1, at = seq(-0.5, 23.5, length.out = 9),>      labels = c('12am', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm', '12am'))```
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}emails_perhour.jpg"></center>
+	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}"emails_perhour.jpg"></center>
 </div>
 The distribution is somewhat bimodal; there’s a small cluster scattered around noon and a larger cluster scattered around 6pm. Not many to expect from 11pm to 10am, which makes sense. I was curious about that one email sent out at 3 in the morning, so I checked:```{r}
 > data[data$hour == 3,]          date hour min                         subj752 2015-02-15    3  17 [FreeFood] wallet at terrace```
@@ -81,7 +81,7 @@ And emails sent after 3pm:
 ```{r}
 > library(tm)> subject.lines = gsub('[[:punct:]]', ' ', data$subj)> subject.lines = gsub('FreeFood', '', subject.lines)> corpus = VCorpus(VectorSource(subject.lines))> tdm = TermDocumentMatrix(corpus)> tdm = as.data.frame(t(as.matrix(tdm)))```In our case, as typically, the term document matrix is sparse (most entries are 0) and high-dimensional (more variables than observations, or more columns than rows). Now we train our regression tree with the package *rpart*.```{r}> library(rpart)> tdm$y = data$hour + data$min / 60> tree = rpart(y ~ ., data = tdm)> par(xpd = NA)> plot(tree)> text(tree)```
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-	<center><img style="middle;width:50%;height:50%" src="{{ site.baseurl }}"freefood_tree.jpg"></center>
+	<center><img style="middle;width:80%;height:80%" src="{{ site.baseurl }}"freefood_tree.jpg"></center>
 </div>
 
 In the regression tree above, each fork has a conditional. For instance, bagels >= 0.5 means that the word “bagels” was in the email subject line. If the conditional is true, then you move to the left child node; if false, move to the right one. This step repeats until you reach a terminal node, upon which the predicted time in hours after midnight is given.“Bagels” turns out to be the single best predictor of time of all the words, predicting 11:24am if present. If “bagels” is not in the subject line, then “sandwiches” is the next best predictor, predicting 2:26pm. If neither “sandwiches” nor “bagels” are in the subject line, then emails having “friend” in the subject line tend to be sent in the early afternoon (1:56pm). Emails with subjects lacking “bagels”, “sandwiches”, and “friend” are all sent later in the afternoon and in the evening.Our last item to investigate is assocations between words in the free food email subjects lines. Given any two words, say “Sushi” and “Frist” we want to know how often they tend to appear together in an email subject. We want to create an association matrix **A**. **A** will be symmetric and each row and column will be assigned a word. For each row $i$ and column $j$ in the matrix, the entry
