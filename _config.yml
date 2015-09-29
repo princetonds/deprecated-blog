@@ -24,3 +24,14 @@ author:
 
 # Custom vars
 version:             1.1.0
+
+# Liquid-LaTeX plugin
+liquid_latex:
+  debug: false
+  density: 300
+  usepackages: pst-all,pst-3dplot
+  output_directory: /res/latex
+  latex_cmd: "latex -interaction=nonstopmode $texfile &> /dev/null"
+  dvips_cmd: "dvips -E $dvifile -o $epsfile &> /dev/null"
+  convert_cmd: "convert -density $density $epsfile $pngfile &> /dev/null"
+  temp_filename: "latex_temp"
