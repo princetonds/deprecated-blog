@@ -44,10 +44,10 @@ That glorious day was Dec 10, 2014, a Wednesday. Perhaps more emails are sent ou
 
 The central limit theorem says that, as nD increases the quantity $$\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i$$  (which is the average of the data values) gets closer and closer to a [Gaussian distribution] (http://mathworld.wolfram.com/NormalDistribution.html) with mean μD and standard deviation $\frac{ \sigma D}{ \sqrt{nD}}$.
 
-This just means that the average number of emails sent on Fridays differs from the “real” average by something around $\frac{ \sigma D}{ \sqrt{nD}}$. If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, $$\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i$$ will be within $\frac{ \sigma D}{ \sqrt{nD}}$ units about 68% of the time. So if we draw on our graph brackets centered on 
+This just means that the average number of emails sent on Fridays differs from the “real” average by something around $\frac{ \sigma D}{ \sqrt{nD}}$. If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, {% latex %}\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i{% endlatex %} will be within $\frac{ \sigma D}{ \sqrt{nD}}$ units about 68% of the time. So if we draw on our graph brackets centered on 
 
 $$\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i$$ with radius $\frac{ \sigma D}{ \sqrt{nD}}$ we’ve just constructed a ~68% confidence interval.Aside: we actually don’t know what $σ_D$ is but we can approximate it with  
- $$ \sqrt{\frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2}$$,
+ {% latex %} \sqrt{\frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2}{% endlatex %},
 and the resulting estimate of $\frac{ \sigma D}{ \sqrt{nD}}$ is called the *standard error of the mean*. Why this approximation? 
 
 Because $\sigma D^2$ is defined as 
