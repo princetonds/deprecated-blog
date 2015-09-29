@@ -24,7 +24,7 @@ That’s not too bad. On the face of it, I could grab several snacks or even ful
 ```{r}> # Create a table of 0s with length the number of school days> count = rep(0, length(school.days))> names(count) = school.days>> # On days emails were sent, fill in the rows of the table with the numbers of emails sent> count[names(table(data$date))] = table(data$date)>> # Verify the mean is the same> mean(count)[1] 2.441718> hist(count)```
 
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}free_food_hist.jpg"></center>
+	<center><img style="middle;width:100%;height:100%" src="{{ site.baseurl }}free_food_hist.jpg"></center>
 </div>
 
 Roughly 2.4 emails were sent out on average, but by no means consistently. The histogram tells us that no emails were sent out about a third of the days. Someone looking to subsist on the Free Food listserv must either be resigned to an empty stomach on those days or stash food when 4 or more emails are sent out (approx. 15% of the time from the histogram). Incidentally, the distribution looks sort of [geometric] (https://en.wikipedia.org/wiki/Geometric_distribution). On the tail end, there was one day that saw 11 emails on the listserv.
