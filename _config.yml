@@ -7,7 +7,6 @@ highlighter:         pygments
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
 relative_permalinks: true
-gems: [liquid_latex]
 
 # Setup
 title:               Princeton Data Science 
@@ -36,3 +35,7 @@ liquid_latex:
   dvips_cmd: "dvips -E $dvifile -o $epsfile &> /dev/null"
   convert_cmd: "convert -density $density $epsfile $pngfile &> /dev/null"
   temp_filename: "latex_temp"
+
+gems:
+  - liquid_latex
+  
