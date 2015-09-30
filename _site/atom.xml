@@ -4,7 +4,7 @@
  <title>Princeton Data Science</title>
  <link href="http://www.princeton-data-science.github.io/atom.xml" rel="self"/>
  <link href="http://www.princeton-data-science.github.io/"/>
- <updated>2015-09-30T00:41:51-04:00</updated>
+ <updated>2015-09-30T00:49:56-04:00</updated>
  <id>http://www.princeton-data-science.github.io</id>
  <author>
    <name>Francine Camacho</name>
@@ -13,17 +13,11 @@
 
  
  <entry>
-   <title>Free Food in Princeton</title>
-   <link href="http://www.princeton-data-science.github.io/2015/09/30/free_food_in_princeton/"/>
+   <title>Free Food at Princeton</title>
+   <link href="http://www.princeton-data-science.github.io/2015/09/30/free_food_at_princeton/"/>
    <updated>2015-09-30T00:00:00-04:00</updated>
-   <id>http://www.princeton-data-science.github.io/2015/09/30/free_food_in_princeton</id>
-   <content type="html">&lt;!-- 
-&lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.princeton-data-science.github.io/public/katex.min.css&quot;&gt;
-&lt;script src=&quot;http://www.princeton-data-science.github.io/public/katex.min.js&quot;&gt;&lt;/script&gt; --&gt;
-
-&lt;p&gt;&lt;h6&gt;&lt;em&gt;Author: Felix Xiao&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2&gt;&lt;em&gt;Predicting Free Food at Princeton&lt;/em&gt;&lt;/h2&gt;
+   <id>http://www.princeton-data-science.github.io/2015/09/30/free_food_at_princeton</id>
+   <content type="html">&lt;p&gt;&lt;h6&gt;&lt;em&gt;Author: Felix Xiao&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Princeton has a &lt;a href=&quot;http://www.universitypressclub.com/archive/2011/04/usg-knows-what-we-want/&quot;&gt;Free Food Listserv&lt;/a&gt;. Here’s a brunch of emails sent on it a while ago:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; data &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; read.csv&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;‘freefood.csv’&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
