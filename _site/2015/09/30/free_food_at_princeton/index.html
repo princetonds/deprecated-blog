@@ -123,6 +123,8 @@
   <span class="post-date">30 Sep 2015</span>
   <p><h6><em>Author: Felix Xiao</em></p>
 
+<h2>Predicting Free Food at Princeton</h2>
+
 <p>Princeton has a <a href="http://www.universitypressclub.com/archive/2011/04/usg-knows-what-we-want/">Free Food Listserv</a>. Here’s a brunch of emails sent on it a while ago:</p>
 <div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> data <span class="o">=</span> read.csv<span class="p">(</span>‘freefood.csv’<span class="p">)</span>
 <span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>data<span class="p">)</span>
@@ -322,7 +324,7 @@
 <span class="o">&gt;</span>      labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;12am&#39;</span><span class="p">,</span> <span class="s">&#39;3am&#39;</span><span class="p">,</span> <span class="s">&#39;6am&#39;</span><span class="p">,</span> <span class="s">&#39;9am&#39;</span><span class="p">,</span> <span class="s">&#39;12pm&#39;</span><span class="p">,</span> <span class="s">&#39;3pm&#39;</span><span class="p">,</span> <span class="s">&#39;6pm&#39;</span><span class="p">,</span> <span class="s">&#39;9pm&#39;</span><span class="p">,</span> <span class="s">&#39;12am&#39;</span><span class="p">))</span>
 </code></pre></div>
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-    <center><img style="middle;width:70%;height:70%" src="/freefood_emailsperhour.jpg"></center>
+    <center><img style="middle;width:80%;height:80%" src="/freefood_emailsperhour.jpg"></center>
 </div>
 
 <p>The distribution is somewhat bimodal; there’s a small cluster scattered around noon and a larger cluster scattered around 6pm. Not many to expect from 11pm to 10am, which makes sense. I was curious about that one email sent out at 3 in the morning, so I checked:</p>
