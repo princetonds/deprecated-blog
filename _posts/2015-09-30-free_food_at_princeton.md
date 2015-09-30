@@ -113,7 +113,7 @@ Now we’re ready to add error bars to the plot.
 
 <p>Since Friday’s 68% confidence interval doesn’t overlap with that of any other day of the week, we can safely say emails are sent out more frequently on Fridays. On the other hand the Sunday, Wednesday, Thursday, Saturday intervals overlap by a lot, so the corresponding population means are likely not that different.</p><p>What about time of day?</p>```{r}> hist(data$hour, breaks = seq(-0.5, 23.5, 1), xlab = 'Hour of day', freq = F,>      main = 'Free food emails by hour of day', ylab = 'Proportion of emails', xaxt = 'n')> axis(side = 1, at = seq(-0.5, 23.5, length.out = 9),>      labels = c('12am', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm', '12am'))```
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}freefood_emailsperhour.jpg"></center>
+	<center><img style="middle;width:80%;height:80%" src="{{ site.baseurl }}freefood_emailsperhour.jpg"></center>
 </div>
 The distribution is somewhat bimodal; there’s a small cluster scattered around noon and a larger cluster scattered around 6pm. Not many to expect from 11pm to 10am, which makes sense. I was curious about that one email sent out at 3 in the morning, so I checked:```{r}
 > data[data$hour == 3,]          date hour min                         subj752 2015-02-15    3  17 [FreeFood] wallet at terrace```
