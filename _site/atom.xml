@@ -4,7 +4,7 @@
  <title>Princeton Data Science</title>
  <link href="http://www.princeton-data-science.github.io/atom.xml" rel="self"/>
  <link href="http://www.princeton-data-science.github.io/"/>
- <updated>2015-09-30T10:48:10-04:00</updated>
+ <updated>2015-09-30T10:49:56-04:00</updated>
  <id>http://www.princeton-data-science.github.io</id>
  <author>
    <name>Francine Camacho</name>
@@ -346,7 +346,7 @@ sandwiches      chips        the      dodge     murray       from     olives    
    <link href="http://www.princeton-data-science.github.io/2015/09/16/data_at_opower/"/>
    <updated>2015-09-16T00:00:00-04:00</updated>
    <id>http://www.princeton-data-science.github.io/2015/09/16/data_at_opower</id>
-   <content type="html">&lt;p&gt;&lt;h6&gt;&lt;em&gt;Author: Anna Matlin&lt;/em&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;h6&gt;&lt;em&gt;Author: Anna Matlin &amp;#39;17&lt;/em&gt;&lt;/p&gt;
 
 &lt;div style=&quot;float:center;width:100%;height:100%;margin-bottom:10px;&quot;&gt;
     &lt;img style=&quot;float:center;width:100%;height:100%&quot; src=&quot;/anna1.jpg&quot;&gt;

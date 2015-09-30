@@ -2,7 +2,7 @@
 layout: post
 title: A Summer of Data at Opower
 ---
-<h6>*Author: Anna Matlin*
+<h6>*Author: Anna Matlin '17*
 
 <div style="float:center;width:100%;height:100%;margin-bottom:10px;">
 	<img style="float:center;width:100%;height:100%" src="{{ site.baseurl }}anna1.jpg">
