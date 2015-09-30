@@ -2,7 +2,7 @@
 layout: post
 title: Free Food in Princeton 
 ---
-<!-- {% include katex_import.html %} -->
+{% include katex_import.html %}
 <h6>*Author: Felix Xiao*
 
 ##*Predicting Free Food at Princeton*
@@ -106,4 +106,4 @@ Some interesting ones I found by eyeballing this graph:
 * 	rice – chicken*	rainbow – lounge (where is that?)*	indian – food – murray – dodge*	tea – cupcakes
 
 
-----------------------------<p>Acknowledgements: Evan Chow ‘16, for providing both the data set and the initial idea for its analysis. This blog post would not exist without your abiding enthusiasm for free food.</p><!--{% include katex_render.html %} -->
+----------------------------<p>Acknowledgements: Evan Chow ‘16, for providing both the data set and the initial idea for its analysis. This blog post would not exist without your abiding enthusiasm for free food.</p>{% include katex_render.html %} 
