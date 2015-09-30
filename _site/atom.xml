@@ -4,7 +4,7 @@
  <title>Princeton Data Science</title>
  <link href="http://www.princeton-data-science.github.io/atom.xml" rel="self"/>
  <link href="http://www.princeton-data-science.github.io/"/>
- <updated>2015-09-30T12:46:01-04:00</updated>
+ <updated>2015-09-30T17:57:33-04:00</updated>
  <id>http://www.princeton-data-science.github.io</id>
  <author>
    <name>Francine Camacho</name>
@@ -241,17 +241,21 @@
   &lt;span class=&quot;kr&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;words.freq&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; decreasing &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Let’s look at all the emails first. The 30 most common subject line words are:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; subject.line.words&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;p&gt;Let’s look at all the emails first. The 30 most common subject line words are:
+```{r}&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;subject.line.words(data)[1:30]
 words
-        &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;        and                  food      frist      pizza       free    cookies sandwiches         of 
-       &lt;span class=&quot;m&quot;&gt;156&lt;/span&gt;        &lt;span class=&quot;m&quot;&gt;103&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;64&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;64&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;59&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;58&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;54&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;44&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;44&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;41&lt;/span&gt; 
-       the         at      salad       room     center      chips      dodge       from     murray       club 
-        &lt;span class=&quot;m&quot;&gt;31&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;26&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;26&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;25&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;23&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;22&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;18&lt;/span&gt; 
-    campus     friend     lounge     olives    chicken      floor    outside   basement    chinese     common 
-        &lt;span class=&quot;m&quot;&gt;17&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;17&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;17&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;17&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;14&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;14&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;14&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The subject lines are quite informative about (1) location of free food and (2) the type of food. Looking at the table above, we see that Frist is a popular venue (59 emails), along with Murray-Dodge (20), Friend Center (17), and Campus Club (17). We also note that Pizza (58) is the most-supplied food item, followed by cookies (44) and sandwiches (44).&lt;/p&gt;
+        in        and            sandwiches       food       free      frist         at      salad    cookies 
+        49         38         27         24         18         17         15         14         14         13 
+        of        the     center     friend      pizza     bagels     lounge     mcgraw    rainbow     campus 
+        12         12         10         10         10          8          8          8          8          6 
+   chicken       club     coffee  chocolate       from       lgbt       room    tonight      wraps      bread 
+         6          6          6          5          5          5          5          5          5          4 
+```
+The subject lines are quite informative about (1) location of free food and (2) the type of food. Looking at the table above, we see that Frist is a popular venue (59 emails), along with Murray-Dodge (20), Friend Center (17), and Campus Club (17). We also note that Pizza (58) is the most-supplied food item, followed by cookies (44) and sandwiches (44).&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;We can take this in a number of directions. We can find out which foods are closely associated with what locations. We can see if the time of day the email was sent has any effect on subject line content. A fast way of answering the latter question is to simply filter for emails sent during a certain period in the day and call subject.line.words. We do that with emails sent before 3pm:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; subject.line.words&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;data&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;hour &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,])[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;

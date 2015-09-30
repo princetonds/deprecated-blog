@@ -345,17 +345,21 @@
   <span class="kr">return</span><span class="p">(</span><span class="kp">sort</span><span class="p">(</span>words.freq<span class="p">,</span> decreasing <span class="o">=</span> <span class="bp">T</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Let’s look at all the emails first. The 30 most common subject line words are:</p>
-<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> subject.line.words<span class="p">(</span>data<span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">]</span>
+<p>Let’s look at all the emails first. The 30 most common subject line words are:
+```{r}</p>
+
+<blockquote>
+<p>subject.line.words(data)[1:30]
 words
-        <span class="kr">in</span>        and                  food      frist      pizza       free    cookies sandwiches         of 
-       <span class="m">156</span>        <span class="m">103</span>         <span class="m">64</span>         <span class="m">64</span>         <span class="m">59</span>         <span class="m">58</span>         <span class="m">54</span>         <span class="m">44</span>         <span class="m">44</span>         <span class="m">41</span> 
-       the         at      salad       room     center      chips      dodge       from     murray       club 
-        <span class="m">31</span>         <span class="m">26</span>         <span class="m">26</span>         <span class="m">25</span>         <span class="m">23</span>         <span class="m">22</span>         <span class="m">20</span>         <span class="m">20</span>         <span class="m">20</span>         <span class="m">18</span> 
-    campus     friend     lounge     olives    chicken      floor    outside   basement    chinese     common 
-        <span class="m">17</span>         <span class="m">17</span>         <span class="m">17</span>         <span class="m">17</span>         <span class="m">14</span>         <span class="m">14</span>         <span class="m">14</span>         <span class="m">13</span>         <span class="m">13</span>         <span class="m">13</span>
-</code></pre></div>
-<p>The subject lines are quite informative about (1) location of free food and (2) the type of food. Looking at the table above, we see that Frist is a popular venue (59 emails), along with Murray-Dodge (20), Friend Center (17), and Campus Club (17). We also note that Pizza (58) is the most-supplied food item, followed by cookies (44) and sandwiches (44).</p>
+        in        and            sandwiches       food       free      frist         at      salad    cookies 
+        49         38         27         24         18         17         15         14         14         13 
+        of        the     center     friend      pizza     bagels     lounge     mcgraw    rainbow     campus 
+        12         12         10         10         10          8          8          8          8          6 
+   chicken       club     coffee  chocolate       from       lgbt       room    tonight      wraps      bread 
+         6          6          6          5          5          5          5          5          5          4 
+```
+The subject lines are quite informative about (1) location of free food and (2) the type of food. Looking at the table above, we see that Frist is a popular venue (59 emails), along with Murray-Dodge (20), Friend Center (17), and Campus Club (17). We also note that Pizza (58) is the most-supplied food item, followed by cookies (44) and sandwiches (44).</p>
+</blockquote>
 
 <p>We can take this in a number of directions. We can find out which foods are closely associated with what locations. We can see if the time of day the email was sent has any effect on subject line content. A fast way of answering the latter question is to simply filter for emails sent during a certain period in the day and call subject.line.words. We do that with emails sent before 3pm:</p>
 <div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> subject.line.words<span class="p">(</span>data<span class="p">[</span>data<span class="o">$</span>hour <span class="o">&lt;</span> <span class="m">15</span><span class="p">,])[</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">]</span>
