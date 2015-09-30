@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Free Food at Princeton 
+title: Free Food in Princeton 
 ---
 <h6>*Author: Felix Xiao*
 
