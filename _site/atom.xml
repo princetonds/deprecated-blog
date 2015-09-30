@@ -4,7 +4,7 @@
  <title>Princeton Data Science</title>
  <link href="http://www.princeton-data-science.github.io/atom.xml" rel="self"/>
  <link href="http://www.princeton-data-science.github.io/"/>
- <updated>2015-09-29T23:22:30-04:00</updated>
+ <updated>2015-09-29T23:37:32-04:00</updated>
  <id>http://www.princeton-data-science.github.io</id>
  <author>
    <name>Francine Camacho</name>
@@ -284,7 +284,7 @@ $$a_{ij}=\frac{\text{# emails with both word i and j}} {\text{# emails with eith
 
 &lt;p&gt;Acknowledgements: Evan Chow ‘16, for providing both the data set and the initial idea for its analysis. This blog post would not exist without your abiding enthusiasm for free food.&lt;/p&gt;
 
-&lt;!--&lt;script type=&quot;text/javascript&quot;&gt;
+&lt;!-- &lt;script type=&quot;text/javascript&quot;&gt;
     var tex = document.getElementsByClassName(&quot;equation&quot;);
     Array.prototype.forEach.call(tex, function(el) {
         katex.render(el.getAttribute(&quot;data-expr&quot;), el);

@@ -22,8 +22,8 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
   <link rel="stylesheet" href="/public/css/members.css">
   <link rel="stylesheet" href="/public/site.css">
-<link rel="stylesheet" href="/public/katex.min.css">
-<script src="/public/katex.min.js"></script>
+  <link rel="stylesheet" href="/public/katex.min.css">
+  <script src="/public/katex.min.js"></script>
 
   <!-- Icons -->
   <link rel="avatar" sizes="144x144" href="/public/avatar.png">
@@ -277,5 +277,13 @@
   ga('send', 'pageview');
 
 </script>
+
+<script type="text/javascript">
+    var tex = document.getElementsByClassName("equation");
+    Array.prototype.forEach.call(tex, function(el) {
+        katex.render(el.getAttribute("data-expr"), el);
+    });
+  </script>
+  
   </body>
 </html>

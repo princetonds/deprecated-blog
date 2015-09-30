@@ -59,5 +59,13 @@
   ga('send', 'pageview');
 
 </script>
+
+<script type="text/javascript">
+    var tex = document.getElementsByClassName("equation");
+    Array.prototype.forEach.call(tex, function(el) {
+        katex.render(el.getAttribute("data-expr"), el);
+    });
+  </script>
+  
   </body>
 </html>
