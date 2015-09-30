@@ -40,25 +40,74 @@ That glorious day was Dec 10, 2014, a Wednesday. Perhaps more emails are sent ou
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
 	<center><img style="middle;width:100%;height:100%" src="{{ site.baseurl }}freefood_avgemails.jpg"></center>
 </div>
-To see whether these differences in average emails are significant or are just noise, we need to draw some confidence intervals. We’ll start by making some assumptions:1.	For each day of the week D, the numbers of emails $X^{(D)}_1, X^{(D)}_2,....,X^{(D)}_{nD}$ sent on that day all follow the same probability distribution with mean μD and standard deviation σD.2.	The number of emails sent on any day does not depend on the numbers of emails sent on any past daysTaken together, these are the *independent(2) and identically distributed (1)* assumptions on data that ~ 90% of statistical techniques rely on. This page gives another succinct explanation of [independent, identically distributed] (http://math.stackexchange.com/questions/466927/independent-identically-distributed-iid-random-variables) random variables.
+To see whether these differences in average emails are significant or are just noise, we need to draw some confidence intervals. We’ll start by making some assumptions:* For each day of the week D, the numbers of emails: 
 
-The central limit theorem says that, as nD increases the quantity 
+{% raw %}
+<div class="equation" data-expr="X^{(D)}_1, X^{(D)}_2,....,X^{(D)}_{nD}"></div> 
+{% endraw %}
+sent on that day all follow the same probability distribution with mean μD and standard deviation σD.
+
+* The number of emails sent on any day does not depend on the numbers of emails sent on any past days.Taken together, these are the *independent(2) and identically distributed (1)* assumptions on data that ~ 90% of statistical techniques rely on. This page gives another succinct explanation of [independent, identically distributed] (http://math.stackexchange.com/questions/466927/independent-identically-distributed-iid-random-variables) random variables.
+
+The central limit theorem says that, as nD increases the quantity, 
 {% raw %}
 <div class="equation" data-expr="\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i"></div> 
 {% endraw %}
-(which is the average of the data values) gets closer and closer to a [Gaussian distribution] (http://mathworld.wolfram.com/NormalDistribution.html) with mean μD and standard deviation $\frac{ \sigma D}{ \sqrt{nD}}$.
+(which is the average of the data values) gets closer and closer to a [Gaussian distribution] (http://mathworld.wolfram.com/NormalDistribution.html) with mean μD and standard deviation,
+{% raw %}
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
+{% endraw %}
+This just means that the average number of emails sent on Fridays differs from the “real” average by something around:
+{% raw %}
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
+{% endraw %}
+If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, 
+{% raw %}
+<div class="equation" data-expr="\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i"></div> 
+{% endraw %} 
+will be within, 
+{% raw %}
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
+{% endraw %} 
+units about 68% of the time. So if we draw on our graph brackets centered on, 
+{% raw %}
+<div class="equation" data-expr="\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i"></div> 
+{% endraw %} 
+with radius, 
+{% raw %}
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
+{% endraw %} 
+we’ve just constructed a ~68% confidence interval.
+Aside: we actually don’t know what, 
+{% raw %}
+<div class="equation" data-expr="\sigma_D"></div> 
+{% endraw %} 
+is but we can approximate it with:  
+{% raw %}
+<div class="equation" data-expr="\sqrt{\frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2}"></div> 
+{% endraw %}
+and the resulting estimate of 
+{% raw %}
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
+{% endraw %}
+is called the *standard error of the mean*. Why this approximation? 
 
-This just means that the average number of emails sent on Fridays differs from the “real” average by something around $\frac{ \sigma D}{ \sqrt{nD}}$. If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, $$\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i$$ will be within $\frac{ \sigma D}{ \sqrt{nD}}$ units about 68% of the time. So if we draw on our graph brackets centered on 
-
-$$\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i$$ with radius $\frac{ \sigma D}{ \sqrt{nD}}$ we’ve just constructed a ~68% confidence interval.Aside: we actually don’t know what $σ_D$ is but we can approximate it with  
- $$\sqrt{\frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2}$$,
-and the resulting estimate of $\frac{ \sigma D}{ \sqrt{nD}}$ is called the *standard error of the mean*. Why this approximation? 
-
-Because $\sigma D^2$ is defined as 
-$$ E[(X^{(D)}-µ_D)^2]$$
+Because {% raw %}
+<div class="equation" data-expr="\sigma D^2"></div> 
+{% endraw %}
+is defined as 
+{% raw %}
+<div class="equation" data-expr="E[(X^{(D)}-\mu_D)^2]"></div> 
+{% endraw %}
  by the law of large numbers,
- $$ \frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2$$
-converges to $\sigma D^2$. Now we’re ready to add error bars to the plot.
+ {% raw %}
+<div class="equation" data-expr="\frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2"></div> 
+{% endraw %}
+converges to:
+ {% raw %}
+<div class="equation" data-expr="\sigma D^2"></div> 
+{% endraw %} 
+Now we’re ready to add error bars to the plot.
 ```{r}> # create a function to compute standard error for a> # set of emails sent on a particular day> compute.se = function(df)> {>   dow = unique(weekdays(df$date))>   stopifnot(length(dow) == 1)>   >   days = school.days[weekdays(school.days) == dow]>   n = length(days)>   >   count = rep(0, length(days))>   names(count) = days>   count[names(table(df$date))] = table(df$date)>   >   return( sd(count) / sqrt(n) )  > }>> se = sapply(day.of.week, compute.se)>> # barplot( ) returns horizontal position of the days> x  = barplot(emails / days, main = 'Avg # emails each day of week', ylim = c(0, 5))> arrows(x, emails / days + se, x, emails / days - se, angle = 90, code = 3, length = 0.1)```
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
 	<center><img style="middle;width:100%;height:100%" src="{{ site.baseurl }}freefood_avgemails_perday.jpg"></center>
@@ -80,24 +129,28 @@ And emails sent after 3pm:
 
 ```{r}
 > subject.line.words(data[data$hour >= 15,])[1:30]words        in        and      pizza       food      frist                  free    cookies         of       room        107         65         48         46         44         37         37         31         29         20 sandwiches      chips        the      dodge     murray       from     olives      floor     center         at         20         19         19         17         17         15         15         14         13         12   basement       club     common      salad     campus    chinese    outside     indian     lounge     cheese         12         12         12         12         11         11         11         10          9          8```
-<p>This quickly shows that there is a relationship between time of day and subject line content. Namely, that sandwiches are more prevalent during lunch hours and pizza during dinner hours. We can also see that Friend Center is pretty common location before 3pm, but hardly used at all after 3pm.</p>Let’s do something more sophisticated and frame the same question as a regression problem. We are looking for a math function whose input will be the words in the subject line of an email and whose output will be the best guess for the hour of day the email was sent. For reasons of model flexibility, high dimensionality, and interpretability, we’re going to model the regression function as a classic regression tree. If you haven’t heard of a regression tree before, please read [this page] (http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) before reading the next section.To train the regression tree, the matrix of input variables **X** must be in this form: each row $i$ is an individual email and each column $j$ is a word. The matrix entry $x_{ij}$ will be 1 if word $j$ is in the subject line of email $i$, and 0 otherwise. **X** will have number of columns equal to how many unique words are in all the email subjects. In natural language processing, **X** is called a *term document matrix*.
+<p>This quickly shows that there is a relationship between time of day and subject line content. Namely, that sandwiches are more prevalent during lunch hours and pizza during dinner hours. We can also see that Friend Center is pretty common location before 3pm, but hardly used at all after 3pm.</p>Let’s do something more sophisticated and frame the same question as a regression problem. We are looking for a math function whose input will be the words in the subject line of an email and whose output will be the best guess for the hour of day the email was sent. For reasons of model flexibility, high dimensionality, and interpretability, we’re going to model the regression function as a classic regression tree. If you haven’t heard of a regression tree before, please read [this page] (http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) before reading the next section.To train the regression tree, the matrix of input variables **X** must be in this form: each row *i* is an individual email and each column *j* is a word. The matrix entry,
+{% raw %}
+<div class="equation" data-expr="x_{ij}"></div> 
+{% endraw %}
+will be 1 if word *j* is in the subject line of email *i*, and 0 otherwise. **X** will have number of columns equal to how many unique words are in all the email subjects. In natural language processing, **X** is called a *term document matrix*.
 
 ```{r}
 > library(tm)> subject.lines = gsub('[[:punct:]]', ' ', data$subj)> subject.lines = gsub('FreeFood', '', subject.lines)> corpus = VCorpus(VectorSource(subject.lines))> tdm = TermDocumentMatrix(corpus)> tdm = as.data.frame(t(as.matrix(tdm)))```In our case, as typically, the term document matrix is sparse (most entries are 0) and high-dimensional (more variables than observations, or more columns than rows). Now we train our regression tree with the package *rpart*.```{r}> library(rpart)> tdm$y = data$hour + data$min / 60> tree = rpart(y ~ ., data = tdm)> par(xpd = NA)> plot(tree)> text(tree)```
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}freefood_tree.jpg"></center>
+	<center><img style="middle;width:90%;height:90%" src="{{ site.baseurl }}freefood_tree.jpg"></center>
 </div>
 
 
-In the regression tree above, each fork has a conditional. For instance, bagels >= 0.5 means that the word “bagels” was in the email subject line. If the conditional is true, then you move to the left child node; if false, move to the right one. This step repeats until you reach a terminal node, upon which the predicted time in hours after midnight is given.“Bagels” turns out to be the single best predictor of time of all the words, predicting 11:24am if present. If “bagels” is not in the subject line, then “sandwiches” is the next best predictor, predicting 2:26pm. If neither “sandwiches” nor “bagels” are in the subject line, then emails having “friend” in the subject line tend to be sent in the early afternoon (1:56pm). Emails with subjects lacking “bagels”, “sandwiches”, and “friend” are all sent later in the afternoon and in the evening.Our last item to investigate is assocations between words in the free food email subjects lines. Given any two words, say “Sushi” and “Frist” we want to know how often they tend to appear together in an email subject. We want to create an association matrix **A**. **A** will be symmetric and each row and column will be assigned a word. For each row $i$ and column $j$ in the matrix, the entry
-$$a_{ij}=\frac{\text{# emails with both word i and j}} {\text{# emails with either word i or j}}$$
-
-We restrict our scope of words to those that appeared in at least 6 emails. After we have our assocation matrix **A** (which maps 63 words) we visualize it as a network graph. Nodes are words and edges between words indicate an **A** entry of at least 0.15 (thicker edges indicate greater assocation).
+In the regression tree above, each fork has a conditional. For instance, bagels >= 0.5 means that the word “bagels” was in the email subject line. If the conditional is true, then you move to the left child node; if false, move to the right one. This step repeats until you reach a terminal node, upon which the predicted time in hours after midnight is given.“Bagels” turns out to be the single best predictor of time of all the words, predicting 11:24am if present. If “bagels” is not in the subject line, then “sandwiches” is the next best predictor, predicting 2:26pm. If neither “sandwiches” nor “bagels” are in the subject line, then emails having “friend” in the subject line tend to be sent in the early afternoon (1:56pm). Emails with subjects lacking “bagels”, “sandwiches”, and “friend” are all sent later in the afternoon and in the evening.Our last item to investigate is assocations between words in the free food email subjects lines. Given any two words, say “Sushi” and “Frist” we want to know how often they tend to appear together in an email subject. We want to create an association matrix **A**. **A** will be symmetric and each row and column will be assigned a word. For each row *i* and column *j* in the matrix, the entry
+{% raw %}
+<div class="equation" data-expr="a_{ij}=\frac{\text{number of emails with both word i and j}} {\text{number of emails with either word i or j}}"></div> 
+{% endraw %}We restrict our scope of words to those that appeared in at least 6 emails. After we have our assocation matrix **A** (which maps 63 words) we visualize it as a network graph. Nodes are words and edges between words indicate an **A** entry of at least 0.15 (thicker edges indicate greater assocation).
 
 ```{r}
 > m = as.matrix(tdm[,-ncol(tdm)]) > 0> colsums = apply(m, 2, sum)> m = m[, colsums >= 6]>> X = t(m) %*% m> Y = t(!m) %*% m> A = X / (X + Y + t(Y))>> library(qgraph)> qgraph(A, minimum = 0.15, border.color = 'Gray', labels = colnames(S), label.scale = F, label.cex = 0.8)```
-<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-	<center><img style="middle;width:70%;height:70%" src="{{ site.baseurl }}freefood_network.jpg"></center>
+<div style="middle;width:85%;height:85%;margin-right:auto; margin-left:auto;">
+	<center><img style="middle;width:100%;height:100%" src="{{ site.baseurl }}freefood_network.jpg"></center>
 </div>
 
 
@@ -107,4 +160,3 @@ Some interesting ones I found by eyeballing this graph:
 
 
 ----------------------------<p>Acknowledgements: Evan Chow ‘16, for providing both the data set and the initial idea for its analysis. This blog post would not exist without your abiding enthusiasm for free food.</p>
-<!-- {% include katex_render.html %} -->

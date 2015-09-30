@@ -212,32 +212,86 @@
 
 <p>To see whether these differences in average emails are significant or are just noise, we need to draw some confidence intervals. We’ll start by making some assumptions:</p>
 
-<ol>
-<li> For each day of the week D, the numbers of emails $X^{(D)}<em>1, X^{(D)}</em>2,....,X^{(D)}_{nD}$ sent on that day all follow the same probability distribution with mean μD and standard deviation σD.</li>
-<li> The number of emails sent on any day does not depend on the numbers of emails sent on any past days</li>
-</ol>
+<ul>
+<li>For each day of the week D, the numbers of emails: </li>
+</ul>
+
+<div class="equation" data-expr="X^{(D)}_1, X^{(D)}_2,....,X^{(D)}_{nD}"></div> 
+
+<p>sent on that day all follow the same probability distribution with mean μD and standard deviation σD.</p>
+
+<ul>
+<li>The number of emails sent on any day does not depend on the numbers of emails sent on any past days.</li>
+</ul>
 
 <p>Taken together, these are the <em>independent(2) and identically distributed (1)</em> assumptions on data that ~ 90% of statistical techniques rely on. This page gives another succinct explanation of <a href="http://math.stackexchange.com/questions/466927/independent-identically-distributed-iid-random-variables">independent, identically distributed</a> random variables.</p>
 
-<p>The central limit theorem says that, as nD increases the quantity </p>
+<p>The central limit theorem says that, as nD increases the quantity, </p>
 
 <div class="equation" data-expr="\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i"></div> 
 
-<p>(which is the average of the data values) gets closer and closer to a <a href="http://mathworld.wolfram.com/NormalDistribution.html">Gaussian distribution</a> with mean μD and standard deviation $\frac{ \sigma D}{ \sqrt{nD}}$.</p>
+<p>(which is the average of the data values) gets closer and closer to a <a href="http://mathworld.wolfram.com/NormalDistribution.html">Gaussian distribution</a> with mean μD and standard deviation,</p>
 
-<p>This just means that the average number of emails sent on Fridays differs from the “real” average by something around $\frac{ \sigma D}{ \sqrt{nD}}$. If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, $$\frac{1}{nD} \sum<em>{i=1}^{nD} X^{(D)}</em>i$$ will be within $\frac{ \sigma D}{ \sqrt{nD}}$ units about 68% of the time. So if we draw on our graph brackets centered on </p>
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
 
-<p>$$\frac{1}{nD} \sum<em>{i=1}^{nD} X^{(D)}</em>i$$ with radius $\frac{ \sigma D}{ \sqrt{nD}}$ we’ve just constructed a ~68% confidence interval.</p>
+<p>This just means that the average number of emails sent on Fridays differs from the “real” average by something around:</p>
 
-<p>Aside: we actually don’t know what $σ<em>D$ is but we can approximate it with<br>
- $$\sqrt{\frac{1}{n</em>D}\sum<em>{i=1}^{n</em>D}(x_i^{(D)}-average(x^{(D)}))^2}$$,
-and the resulting estimate of $\frac{ \sigma D}{ \sqrt{nD}}$ is called the <em>standard error of the mean</em>. Why this approximation? </p>
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
 
-<p>Because $\sigma D^2$ is defined as 
-$$ E[(X^{(D)}-µ<em>D)^2]$$
- by the law of large numbers,
- $$ \frac{1}{n</em>D}\sum<em>{i=1}^{n</em>D}(x_i^{(D)}-average(x^{(D)}))^2$$
-converges to $\sigma D^2$. Now we’re ready to add error bars to the plot.</p>
+<p>If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, </p>
+
+<div class="equation" data-expr="\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i"></div> 
+ 
+
+<p>will be within, </p>
+
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
+ 
+
+<p>units about 68% of the time. So if we draw on our graph brackets centered on, </p>
+
+<div class="equation" data-expr="\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i"></div> 
+ 
+
+<p>with radius, </p>
+
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
+ 
+
+<p>we’ve just constructed a ~68% confidence interval.</p>
+
+<p>Aside: we actually don’t know what, </p>
+
+<div class="equation" data-expr="\sigma_D"></div> 
+ 
+
+<p>is but we can approximate it with:  </p>
+
+<div class="equation" data-expr="\sqrt{\frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2}"></div> 
+
+<p>and the resulting estimate of </p>
+
+<div class="equation" data-expr="\frac{ \sigma D}{ \sqrt{nD}}"></div> 
+
+<p>is called the <em>standard error of the mean</em>. Why this approximation? </p>
+
+<p>Because 
+<div class="equation" data-expr="\sigma D^2"></div> </p>
+
+<p>is defined as </p>
+
+<div class="equation" data-expr="E[(X^{(D)}-\mu_D)^2]"></div> 
+
+<p>by the law of large numbers,</p>
+
+<div class="equation" data-expr="\frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2"></div> 
+
+<p>converges to:</p>
+
+<div class="equation" data-expr="\sigma D^2"></div> 
+ 
+
+<p>Now we’re ready to add error bars to the plot.</p>
 <div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="c1"># create a function to compute standard error for a</span>
 <span class="o">&gt;</span> <span class="c1"># set of emails sent on a particular day</span>
 <span class="o">&gt;</span> compute.se <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>df<span class="p">)</span>
@@ -331,7 +385,11 @@ sandwiches      chips        the      dodge     murray       from     olives    
 
 <p>Let’s do something more sophisticated and frame the same question as a regression problem. We are looking for a math function whose input will be the words in the subject line of an email and whose output will be the best guess for the hour of day the email was sent. For reasons of model flexibility, high dimensionality, and interpretability, we’re going to model the regression function as a classic regression tree. If you haven’t heard of a regression tree before, please read <a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">this page</a> before reading the next section.</p>
 
-<p>To train the regression tree, the matrix of input variables <strong>X</strong> must be in this form: each row $i$ is an individual email and each column $j$ is a word. The matrix entry $x_{ij}$ will be 1 if word $j$ is in the subject line of email $i$, and 0 otherwise. <strong>X</strong> will have number of columns equal to how many unique words are in all the email subjects. In natural language processing, <strong>X</strong> is called a <em>term document matrix</em>.</p>
+<p>To train the regression tree, the matrix of input variables <strong>X</strong> must be in this form: each row <em>i</em> is an individual email and each column <em>j</em> is a word. The matrix entry,</p>
+
+<div class="equation" data-expr="x_{ij}"></div> 
+
+<p>will be 1 if word <em>j</em> is in the subject line of email <em>i</em>, and 0 otherwise. <strong>X</strong> will have number of columns equal to how many unique words are in all the email subjects. In natural language processing, <strong>X</strong> is called a <em>term document matrix</em>.</p>
 <div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>tm<span class="p">)</span>
 <span class="o">&gt;</span> subject.lines <span class="o">=</span> <span class="kp">gsub</span><span class="p">(</span><span class="s">&#39;[[:punct:]]&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span> data<span class="o">$</span>subj<span class="p">)</span>
 <span class="o">&gt;</span> subject.lines <span class="o">=</span> <span class="kp">gsub</span><span class="p">(</span><span class="s">&#39;FreeFood&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> subject.lines<span class="p">)</span>
@@ -348,15 +406,16 @@ sandwiches      chips        the      dodge     murray       from     olives    
 <span class="o">&gt;</span> text<span class="p">(</span>tree<span class="p">)</span>
 </code></pre></div>
 <div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-    <center><img style="middle;width:70%;height:70%" src="/freefood_tree.jpg"></center>
+    <center><img style="middle;width:90%;height:90%" src="/freefood_tree.jpg"></center>
 </div>
 
 <p>In the regression tree above, each fork has a conditional. For instance, bagels &gt;= 0.5 means that the word “bagels” was in the email subject line. If the conditional is true, then you move to the left child node; if false, move to the right one. This step repeats until you reach a terminal node, upon which the predicted time in hours after midnight is given.</p>
 
 <p>“Bagels” turns out to be the single best predictor of time of all the words, predicting 11:24am if present. If “bagels” is not in the subject line, then “sandwiches” is the next best predictor, predicting 2:26pm. If neither “sandwiches” nor “bagels” are in the subject line, then emails having “friend” in the subject line tend to be sent in the early afternoon (1:56pm). Emails with subjects lacking “bagels”, “sandwiches”, and “friend” are all sent later in the afternoon and in the evening.</p>
 
-<p>Our last item to investigate is assocations between words in the free food email subjects lines. Given any two words, say “Sushi” and “Frist” we want to know how often they tend to appear together in an email subject. We want to create an association matrix <strong>A</strong>. <strong>A</strong> will be symmetric and each row and column will be assigned a word. For each row $i$ and column $j$ in the matrix, the entry
-$$a_{ij}=\frac{\text{# emails with both word i and j}} {\text{# emails with either word i or j}}$$</p>
+<p>Our last item to investigate is assocations between words in the free food email subjects lines. Given any two words, say “Sushi” and “Frist” we want to know how often they tend to appear together in an email subject. We want to create an association matrix <strong>A</strong>. <strong>A</strong> will be symmetric and each row and column will be assigned a word. For each row <em>i</em> and column <em>j</em> in the matrix, the entry</p>
+
+<div class="equation" data-expr="a_{ij}=\frac{\text{number of emails with both word i and j}} {\text{number of emails with either word i or j}}"></div> 
 
 <p>We restrict our scope of words to those that appeared in at least 6 emails. After we have our assocation matrix <strong>A</strong> (which maps 63 words) we visualize it as a network graph. Nodes are words and edges between words indicate an <strong>A</strong> entry of at least 0.15 (thicker edges indicate greater assocation).</p>
 <div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> m <span class="o">=</span> <span class="kp">as.matrix</span><span class="p">(</span>tdm<span class="p">[,</span><span class="o">-</span><span class="kp">ncol</span><span class="p">(</span>tdm<span class="p">)])</span> <span class="o">&gt;</span> <span class="m">0</span>
@@ -370,8 +429,8 @@ $$a_{ij}=\frac{\text{# emails with both word i and j}} {\text{# emails with eith
 <span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>qgraph<span class="p">)</span>
 <span class="o">&gt;</span> qgraph<span class="p">(</span>A<span class="p">,</span> minimum <span class="o">=</span> <span class="m">0.15</span><span class="p">,</span> border.color <span class="o">=</span> <span class="s">&#39;Gray&#39;</span><span class="p">,</span> labels <span class="o">=</span> <span class="kp">colnames</span><span class="p">(</span>S<span class="p">),</span> label.scale <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> label.cex <span class="o">=</span> <span class="m">0.8</span><span class="p">)</span>
 </code></pre></div>
-<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
-    <center><img style="middle;width:70%;height:70%" src="/freefood_network.jpg"></center>
+<div style="middle;width:85%;height:85%;margin-right:auto; margin-left:auto;">
+    <center><img style="middle;width:100%;height:100%" src="/freefood_network.jpg"></center>
 </div>
 
 <p>Some interesting ones I found by eyeballing this graph:</p>
@@ -387,13 +446,6 @@ $$a_{ij}=\frac{\text{# emails with both word i and j}} {\text{# emails with eith
 <hr>
 
 <p>Acknowledgements: Evan Chow ‘16, for providing both the data set and the initial idea for its analysis. This blog post would not exist without your abiding enthusiasm for free food.</p>
-
-<!-- <script type="text/javascript">
-    var tex = document.getElementsByClassName("equation");
-    Array.prototype.forEach.call(tex, function(el) {
-        katex.render(el.getAttribute("data-expr"), el);
-    });
-</script> -->
 
 </div>
 

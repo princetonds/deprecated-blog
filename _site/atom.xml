@@ -4,7 +4,7 @@
  <title>Princeton Data Science</title>
  <link href="http://www.princeton-data-science.github.io/atom.xml" rel="self"/>
  <link href="http://www.princeton-data-science.github.io/"/>
- <updated>2015-09-29T23:37:32-04:00</updated>
+ <updated>2015-09-30T00:41:51-04:00</updated>
  <id>http://www.princeton-data-science.github.io</id>
  <author>
    <name>Francine Camacho</name>
@@ -108,32 +108,86 @@
 
 &lt;p&gt;To see whether these differences in average emails are significant or are just noise, we need to draw some confidence intervals. We’ll start by making some assumptions:&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt; For each day of the week D, the numbers of emails $X^{(D)}&lt;em&gt;1, X^{(D)}&lt;/em&gt;2,....,X^{(D)}_{nD}$ sent on that day all follow the same probability distribution with mean μD and standard deviation σD.&lt;/li&gt;
-&lt;li&gt; The number of emails sent on any day does not depend on the numbers of emails sent on any past days&lt;/li&gt;
-&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;For each day of the week D, the numbers of emails: &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;X^{(D)}_1, X^{(D)}_2,....,X^{(D)}_{nD}&quot;&gt;&lt;/div&gt; 
+
+&lt;p&gt;sent on that day all follow the same probability distribution with mean μD and standard deviation σD.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The number of emails sent on any day does not depend on the numbers of emails sent on any past days.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Taken together, these are the &lt;em&gt;independent(2) and identically distributed (1)&lt;/em&gt; assumptions on data that ~ 90% of statistical techniques rely on. This page gives another succinct explanation of &lt;a href=&quot;http://math.stackexchange.com/questions/466927/independent-identically-distributed-iid-random-variables&quot;&gt;independent, identically distributed&lt;/a&gt; random variables.&lt;/p&gt;
 
-&lt;p&gt;The central limit theorem says that, as nD increases the quantity &lt;/p&gt;
+&lt;p&gt;The central limit theorem says that, as nD increases the quantity, &lt;/p&gt;
 
 &lt;div class=&quot;equation&quot; data-expr=&quot;\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i&quot;&gt;&lt;/div&gt; 
 
-&lt;p&gt;(which is the average of the data values) gets closer and closer to a &lt;a href=&quot;http://mathworld.wolfram.com/NormalDistribution.html&quot;&gt;Gaussian distribution&lt;/a&gt; with mean μD and standard deviation $\frac{ \sigma D}{ \sqrt{nD}}$.&lt;/p&gt;
+&lt;p&gt;(which is the average of the data values) gets closer and closer to a &lt;a href=&quot;http://mathworld.wolfram.com/NormalDistribution.html&quot;&gt;Gaussian distribution&lt;/a&gt; with mean μD and standard deviation,&lt;/p&gt;
 
-&lt;p&gt;This just means that the average number of emails sent on Fridays differs from the “real” average by something around $\frac{ \sigma D}{ \sqrt{nD}}$. If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, $$\frac{1}{nD} \sum&lt;em&gt;{i=1}^{nD} X^{(D)}&lt;/em&gt;i$$ will be within $\frac{ \sigma D}{ \sqrt{nD}}$ units about 68% of the time. So if we draw on our graph brackets centered on &lt;/p&gt;
+&lt;div class=&quot;equation&quot; data-expr=&quot;\frac{ \sigma D}{ \sqrt{nD}}&quot;&gt;&lt;/div&gt; 
 
-&lt;p&gt;$$\frac{1}{nD} \sum&lt;em&gt;{i=1}^{nD} X^{(D)}&lt;/em&gt;i$$ with radius $\frac{ \sigma D}{ \sqrt{nD}}$ we’ve just constructed a ~68% confidence interval.&lt;/p&gt;
+&lt;p&gt;This just means that the average number of emails sent on Fridays differs from the “real” average by something around:&lt;/p&gt;
 
-&lt;p&gt;Aside: we actually don’t know what $σ&lt;em&gt;D$ is but we can approximate it with&lt;br&gt;
- $$\sqrt{\frac{1}{n&lt;/em&gt;D}\sum&lt;em&gt;{i=1}^{n&lt;/em&gt;D}(x_i^{(D)}-average(x^{(D)}))^2}$$,
-and the resulting estimate of $\frac{ \sigma D}{ \sqrt{nD}}$ is called the &lt;em&gt;standard error of the mean&lt;/em&gt;. Why this approximation? &lt;/p&gt;
+&lt;div class=&quot;equation&quot; data-expr=&quot;\frac{ \sigma D}{ \sqrt{nD}}&quot;&gt;&lt;/div&gt; 
 
-&lt;p&gt;Because $\sigma D^2$ is defined as 
-$$ E[(X^{(D)}-µ&lt;em&gt;D)^2]$$
- by the law of large numbers,
- $$ \frac{1}{n&lt;/em&gt;D}\sum&lt;em&gt;{i=1}^{n&lt;/em&gt;D}(x_i^{(D)}-average(x^{(D)}))^2$$
-converges to $\sigma D^2$. Now we’re ready to add error bars to the plot.&lt;/p&gt;
+&lt;p&gt;If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, &lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i&quot;&gt;&lt;/div&gt; 
+ 
+
+&lt;p&gt;will be within, &lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;\frac{ \sigma D}{ \sqrt{nD}}&quot;&gt;&lt;/div&gt; 
+ 
+
+&lt;p&gt;units about 68% of the time. So if we draw on our graph brackets centered on, &lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i&quot;&gt;&lt;/div&gt; 
+ 
+
+&lt;p&gt;with radius, &lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;\frac{ \sigma D}{ \sqrt{nD}}&quot;&gt;&lt;/div&gt; 
+ 
+
+&lt;p&gt;we’ve just constructed a ~68% confidence interval.&lt;/p&gt;
+
+&lt;p&gt;Aside: we actually don’t know what, &lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;\sigma_D&quot;&gt;&lt;/div&gt; 
+ 
+
+&lt;p&gt;is but we can approximate it with:  &lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;\sqrt{\frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2}&quot;&gt;&lt;/div&gt; 
+
+&lt;p&gt;and the resulting estimate of &lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;\frac{ \sigma D}{ \sqrt{nD}}&quot;&gt;&lt;/div&gt; 
+
+&lt;p&gt;is called the &lt;em&gt;standard error of the mean&lt;/em&gt;. Why this approximation? &lt;/p&gt;
+
+&lt;p&gt;Because 
+&lt;div class=&quot;equation&quot; data-expr=&quot;\sigma D^2&quot;&gt;&lt;/div&gt; &lt;/p&gt;
+
+&lt;p&gt;is defined as &lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;E[(X^{(D)}-\mu_D)^2]&quot;&gt;&lt;/div&gt; 
+
+&lt;p&gt;by the law of large numbers,&lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;\frac{1}{n_D}\sum_{i=1}^{n_D}(x_i^{(D)}-average(x^{(D)}))^2&quot;&gt;&lt;/div&gt; 
+
+&lt;p&gt;converges to:&lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;\sigma D^2&quot;&gt;&lt;/div&gt; 
+ 
+
+&lt;p&gt;Now we’re ready to add error bars to the plot.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# create a function to compute standard error for a&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# set of emails sent on a particular day&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; compute.se &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;df&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -227,7 +281,11 @@ sandwiches      chips        the      dodge     murray       from     olives    
 
 &lt;p&gt;Let’s do something more sophisticated and frame the same question as a regression problem. We are looking for a math function whose input will be the words in the subject line of an email and whose output will be the best guess for the hour of day the email was sent. For reasons of model flexibility, high dimensionality, and interpretability, we’re going to model the regression function as a classic regression tree. If you haven’t heard of a regression tree before, please read &lt;a href=&quot;http://www.r2d3.us/visual-intro-to-machine-learning-part-1/&quot;&gt;this page&lt;/a&gt; before reading the next section.&lt;/p&gt;
 
-&lt;p&gt;To train the regression tree, the matrix of input variables &lt;strong&gt;X&lt;/strong&gt; must be in this form: each row $i$ is an individual email and each column $j$ is a word. The matrix entry $x_{ij}$ will be 1 if word $j$ is in the subject line of email $i$, and 0 otherwise. &lt;strong&gt;X&lt;/strong&gt; will have number of columns equal to how many unique words are in all the email subjects. In natural language processing, &lt;strong&gt;X&lt;/strong&gt; is called a &lt;em&gt;term document matrix&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;To train the regression tree, the matrix of input variables &lt;strong&gt;X&lt;/strong&gt; must be in this form: each row &lt;em&gt;i&lt;/em&gt; is an individual email and each column &lt;em&gt;j&lt;/em&gt; is a word. The matrix entry,&lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;x_{ij}&quot;&gt;&lt;/div&gt; 
+
+&lt;p&gt;will be 1 if word &lt;em&gt;j&lt;/em&gt; is in the subject line of email &lt;em&gt;i&lt;/em&gt;, and 0 otherwise. &lt;strong&gt;X&lt;/strong&gt; will have number of columns equal to how many unique words are in all the email subjects. In natural language processing, &lt;strong&gt;X&lt;/strong&gt; is called a &lt;em&gt;term document matrix&lt;/em&gt;.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tm&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; subject.lines &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;gsub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;[[:punct:]]&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; data&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;subj&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; subject.lines &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;gsub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;FreeFood&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; subject.lines&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -244,15 +302,16 @@ sandwiches      chips        the      dodge     murray       from     olives    
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; text&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tree&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div style=&quot;middle;width:70%;height:70%;margin-right:auto; margin-left:auto;&quot;&gt;
-    &lt;center&gt;&lt;img style=&quot;middle;width:70%;height:70%&quot; src=&quot;/freefood_tree.jpg&quot;&gt;&lt;/center&gt;
+    &lt;center&gt;&lt;img style=&quot;middle;width:90%;height:90%&quot; src=&quot;/freefood_tree.jpg&quot;&gt;&lt;/center&gt;
 &lt;/div&gt;
 
 &lt;p&gt;In the regression tree above, each fork has a conditional. For instance, bagels &amp;gt;= 0.5 means that the word “bagels” was in the email subject line. If the conditional is true, then you move to the left child node; if false, move to the right one. This step repeats until you reach a terminal node, upon which the predicted time in hours after midnight is given.&lt;/p&gt;
 
 &lt;p&gt;“Bagels” turns out to be the single best predictor of time of all the words, predicting 11:24am if present. If “bagels” is not in the subject line, then “sandwiches” is the next best predictor, predicting 2:26pm. If neither “sandwiches” nor “bagels” are in the subject line, then emails having “friend” in the subject line tend to be sent in the early afternoon (1:56pm). Emails with subjects lacking “bagels”, “sandwiches”, and “friend” are all sent later in the afternoon and in the evening.&lt;/p&gt;
 
-&lt;p&gt;Our last item to investigate is assocations between words in the free food email subjects lines. Given any two words, say “Sushi” and “Frist” we want to know how often they tend to appear together in an email subject. We want to create an association matrix &lt;strong&gt;A&lt;/strong&gt;. &lt;strong&gt;A&lt;/strong&gt; will be symmetric and each row and column will be assigned a word. For each row $i$ and column $j$ in the matrix, the entry
-$$a_{ij}=\frac{\text{# emails with both word i and j}} {\text{# emails with either word i or j}}$$&lt;/p&gt;
+&lt;p&gt;Our last item to investigate is assocations between words in the free food email subjects lines. Given any two words, say “Sushi” and “Frist” we want to know how often they tend to appear together in an email subject. We want to create an association matrix &lt;strong&gt;A&lt;/strong&gt;. &lt;strong&gt;A&lt;/strong&gt; will be symmetric and each row and column will be assigned a word. For each row &lt;em&gt;i&lt;/em&gt; and column &lt;em&gt;j&lt;/em&gt; in the matrix, the entry&lt;/p&gt;
+
+&lt;div class=&quot;equation&quot; data-expr=&quot;a_{ij}=\frac{\text{number of emails with both word i and j}} {\text{number of emails with either word i or j}}&quot;&gt;&lt;/div&gt; 
 
 &lt;p&gt;We restrict our scope of words to those that appeared in at least 6 emails. After we have our assocation matrix &lt;strong&gt;A&lt;/strong&gt; (which maps 63 words) we visualize it as a network graph. Nodes are words and edges between words indicate an &lt;strong&gt;A&lt;/strong&gt; entry of at least 0.15 (thicker edges indicate greater assocation).&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; m &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;as.matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tdm&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;ncol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tdm&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
@@ -266,8 +325,8 @@ $$a_{ij}=\frac{\text{# emails with both word i and j}} {\text{# emails with eith
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;qgraph&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; qgraph&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; minimum &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; border.color &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;Gray&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; labels &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;S&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; label.scale &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; label.cex &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div style=&quot;middle;width:70%;height:70%;margin-right:auto; margin-left:auto;&quot;&gt;
-    &lt;center&gt;&lt;img style=&quot;middle;width:70%;height:70%&quot; src=&quot;/freefood_network.jpg&quot;&gt;&lt;/center&gt;
+&lt;div style=&quot;middle;width:85%;height:85%;margin-right:auto; margin-left:auto;&quot;&gt;
+    &lt;center&gt;&lt;img style=&quot;middle;width:100%;height:100%&quot; src=&quot;/freefood_network.jpg&quot;&gt;&lt;/center&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Some interesting ones I found by eyeballing this graph:&lt;/p&gt;
@@ -283,13 +342,6 @@ $$a_{ij}=\frac{\text{# emails with both word i and j}} {\text{# emails with eith
 &lt;hr&gt;
 
 &lt;p&gt;Acknowledgements: Evan Chow ‘16, for providing both the data set and the initial idea for its analysis. This blog post would not exist without your abiding enthusiasm for free food.&lt;/p&gt;
-
-&lt;!-- &lt;script type=&quot;text/javascript&quot;&gt;
-    var tex = document.getElementsByClassName(&quot;equation&quot;);
-    Array.prototype.forEach.call(tex, function(el) {
-        katex.render(el.getAttribute(&quot;data-expr&quot;), el);
-    });
-&lt;/script&gt; --&gt;
 </content>
  </entry>
  
