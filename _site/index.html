@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Princeton Data Science &middot; Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="/public/css/members.css">
+
+  <!-- Icons -->
+  <link rel="avatar" sizes="144x144" href="/public/avatar.png">
+  <link rel="icon" href="/public/favicon.ico">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Added by Francine Camacho and managed by her gmail account. -->
+  <!-- Google Analytics --> 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61971342-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+
+  <body>
+  <body class="theme-base-09">
+     </body>
+  
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>We hope to create a community of students interested in data science careers, and to provide opportunities to sharpen data-oriented skills.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item active" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/members/">Members</a>
+        
+      
+    
+
+    <a class="sidebar-nav-item" href="https://github.com/princeton-data-science">GitHub Organization</a>
+    <span class="sidebar-nav-item">Currently v1.1.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; Francine Camacho 2015. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Princeton Data Science</a>
+            <small>Blog</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <link rel="stylesheet" href="http://www.princeton-data-science.github.io/public/site.css">
+
+<div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2015/09/30/free_food_in_princeton/">
+        Free Food in Princeton
+      </a>
+    </h1>
+
+    <span class="post-date">30 Sep 2015</span>
+
+    <!-- KaTeX -->
+
+<p><link rel="stylesheet" href="http://www.princeton-data-science.github.io/public/katex.min.css">
+<script src="http://www.princeton-data-science.github.io/public/katex.min.js"></script> 
+<h6><em>Author: Felix Xiao</em></p>
+
+<h2><em>Predicting Free Food at Princeton</em></h2>
+
+<p>Princeton has a <a href="http://www.universitypressclub.com/archive/2011/04/usg-knows-what-we-want/">Free Food Listserv</a>. Here’s a brunch of emails sent on it a while ago:</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> data <span class="o">=</span> read.csv<span class="p">(</span>‘freefood.csv’<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>data<span class="p">)</span>
+        date hour min                                                             subj
+<span class="m">1</span> <span class="m">2013-11-20</span>   <span class="m">16</span>  <span class="m">55</span>                                <span class="p">[</span>FreeFood<span class="p">]</span> Olives at campus club<span class="o">!</span>
+<span class="m">2</span> <span class="m">2013-11-20</span>   <span class="m">19</span>  <span class="m">15</span>                     <span class="p">[</span>FreeFood<span class="p">]</span> Free Pizza <span class="kr">in</span> Lewis Library Lobby
+<span class="m">3</span> <span class="m">2013-11-21</span>   <span class="m">16</span>   <span class="m">4</span>                  <span class="p">[</span>FreeFood<span class="p">]</span> FREE PiZZA <span class="kr">in</span> Frist by the TV lounge
+<span class="m">4</span> <span class="m">2013-11-21</span>   <span class="m">16</span>  <span class="m">15</span> <span class="p">[</span>FreeFood<span class="p">]</span> Wine<span class="p">,</span> Brownies<span class="p">,</span> Miscellaneous Snacks <span class="kr">in</span> Schultz Lobby
+<span class="m">5</span> <span class="m">2013-11-22</span>   <span class="m">12</span>   <span class="m">9</span>                               <span class="p">[</span>FreeFood<span class="p">]</span> Sandwiches <span class="kr">in</span> Frist <span class="m">247</span>
+<span class="m">6</span> <span class="m">2013-11-23</span>   <span class="m">17</span>  <span class="m">56</span>                           <span class="p">[</span>FreeFood<span class="p">]</span> CHINESE FOOD IN CAMPUS CLUB
+</code></pre></div>
+<p>This data set lists the dates, times, and subject lines of all emails sent on the Free Food Listserv since <strong>November 20, 2013</strong>. It can be downloaded <a href="https://github.com/princeton-data-science/FreeFood">here</a>.</p>
+
+<p>In this blog post, I’ll be analyzing these emails with the statistical programming language, <a href="https://www.r-project.org/">R</a>. I’ve embedded my code in the analysis to show exactly how I’m doing that. Feel free to download my code and run it yourself.</p>
+
+<p>Data science is about coming up with interesting, well-defined questions and manipulating data to find rigorous answers. For instance, <strong>how many emails are sent out on the Free Food Listserv per day, on average?</strong> The answer depends a lot on whether we include winter break, summer vacation, etc. Virtually no emails are sent out during breaks, so we can sensibly restrict our data set to the 2014-2015 academic year.</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> school.days <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2014-09-10&#39;</span><span class="p">),</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2014-10-24&#39;</span><span class="p">),</span> by <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="o">&gt;</span> school.days <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>school.days<span class="p">,</span> <span class="kp">seq</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2014-11-03&#39;</span><span class="p">),</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2014-11-25&#39;</span><span class="p">),</span> by <span class="o">=</span> <span class="m">1</span><span class="p">))</span>
+<span class="o">&gt;</span> school.days <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>school.days<span class="p">,</span> <span class="kp">seq</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2014-12-01&#39;</span><span class="p">),</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2014-12-12&#39;</span><span class="p">),</span> by <span class="o">=</span> <span class="m">1</span><span class="p">))</span>
+<span class="o">&gt;</span> school.days <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>school.days<span class="p">,</span> <span class="kp">seq</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2015-02-02&#39;</span><span class="p">),</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2015-03-14&#39;</span><span class="p">),</span> by <span class="o">=</span> <span class="m">1</span><span class="p">))</span>
+<span class="o">&gt;</span> school.days <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>school.days<span class="p">,</span> <span class="kp">seq</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2015-03-23&#39;</span><span class="p">),</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2015-05-03&#39;</span><span class="p">),</span> by <span class="o">=</span> <span class="m">1</span><span class="p">))</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> data <span class="o">=</span> data<span class="p">[</span>data<span class="o">$</span>date <span class="o">%in%</span> school.days<span class="p">,]</span>
+</code></pre></div>
+<p>Now we can answer our question by simply dividing the number of emails by the number of school days.</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="kp">nrow</span><span class="p">(</span>data<span class="p">)</span> <span class="o">/</span> <span class="kp">length</span><span class="p">(</span>school.days<span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">2.441718</span>
+</code></pre></div>
+<p>That’s not too bad. On the face of it, I could grab several snacks or even full meals per day by just checking my email religiously and running very fast. We should be cautious drawing this kind of conclusion however, since we only know the average. For all we know, half the days may see zero emails and the other half five. It’s important to look at the <strong>distribution of number of emails per day</strong>. For that, we need to coax our data set from a list of dates into a table denoting, for each school day, how many emails were sent out. Then we plot a histogram.</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="c1"># Create a table of 0s with length the number of school days</span>
+<span class="o">&gt;</span> count <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="kp">length</span><span class="p">(</span>school.days<span class="p">))</span>
+<span class="o">&gt;</span> <span class="kp">names</span><span class="p">(</span>count<span class="p">)</span> <span class="o">=</span> school.days
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="c1"># On days emails were sent, fill in the rows of the table with the numbers of emails sent</span>
+<span class="o">&gt;</span> count<span class="p">[</span><span class="kp">names</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>data<span class="o">$</span><span class="kp">date</span><span class="p">))]</span> <span class="o">=</span> <span class="kp">table</span><span class="p">(</span>data<span class="o">$</span><span class="kp">date</span><span class="p">)</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="c1"># Verify the mean is the same</span>
+<span class="o">&gt;</span> <span class="kp">mean</span><span class="p">(</span>count<span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">2.441718</span>
+<span class="o">&gt;</span> hist<span class="p">(</span>count<span class="p">)</span>
+</code></pre></div>
+<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
+    <center><img style="middle;width:100%;height:100%" src="/freefood_freq.jpg"></center>
+</div>
+
+<p>Roughly 2.4 emails were sent out on average, but by no means consistently. The histogram tells us that no emails were sent out about a third of the days. Someone looking to subsist on the Free Food listserv must either be resigned to an empty stomach on those days or stash food when 4 or more emails are sent out (approx. 15% of the time from the histogram). Incidentally, the distribution looks sort of <a href="https://en.wikipedia.org/wiki/Geometric_distribution">geometric</a>. On the tail end, there was one day that saw 11 emails on the listserv.</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> feast.day <span class="o">=</span> <span class="kp">names</span><span class="p">(</span><span class="kp">which.max</span><span class="p">(</span>count<span class="p">))</span>
+<span class="o">&gt;</span> data<span class="p">[</span>data<span class="o">$</span>date <span class="o">==</span> feast.day<span class="p">,]</span>
+
+<span class="m">659</span> <span class="m">2014-12-10</span>   <span class="m">14</span>   <span class="m">4</span>                                  <span class="p">[</span>FreeFood<span class="p">]</span> Food Panel and Senegalese Food
+<span class="m">660</span> <span class="m">2014-12-10</span>   <span class="m">15</span>  <span class="m">11</span>                            <span class="p">[</span>FreeFood<span class="p">]</span> <span class="m">2</span> boxes of pizza <span class="o">+</span> <span class="m">1</span> bottle of pepsi
+<span class="m">661</span> <span class="m">2014-12-10</span>   <span class="m">15</span>  <span class="m">13</span>                                                                 <span class="p">[</span>FreeFood<span class="p">]</span>
+<span class="m">662</span> <span class="m">2014-12-10</span>   <span class="m">15</span>  <span class="m">38</span>                   <span class="p">[</span>FreeFood<span class="p">]</span> Boom chicka pop<span class="p">,</span> Chips <span class="o">&amp;</span> salsa <span class="kr">in</span> pace center
+<span class="m">663</span> <span class="m">2014-12-10</span>   <span class="m">16</span>  <span class="m">45</span>                                 <span class="p">[</span>FreeFood<span class="p">]</span> Free Mehek<span class="o">!!</span> Robertson basement
+<span class="m">664</span> <span class="m">2014-12-10</span>   <span class="m">17</span>  <span class="m">19</span>                         <span class="p">[</span>FreeFood<span class="p">]</span> Senegalese food at Carl a fields center
+<span class="m">665</span> <span class="m">2014-12-10</span>   <span class="m">17</span>  <span class="m">20</span>                                                 <span class="p">[</span>FreeFood<span class="p">]</span> Senegalese food
+<span class="m">666</span> <span class="m">2014-12-10</span>   <span class="m">17</span>  <span class="m">42</span>                         <span class="p">[</span>FreeFood<span class="p">]</span> Reception leftovers <span class="kr">in</span> art museum lobby
+<span class="m">667</span> <span class="m">2014-12-10</span>   <span class="m">18</span>  <span class="m">54</span>                                   <span class="p">[</span>FreeFood<span class="p">]</span> COFFEE<span class="p">,</span> CANDY<span class="p">,</span> COOKIES<span class="p">,</span> CHIPS
+<span class="m">668</span> <span class="m">2014-12-10</span>   <span class="m">19</span>  <span class="m">41</span>                                  <span class="p">[</span>FreeFood<span class="p">]</span> Chinese <span class="kr">in</span> Whitman Common Room
+<span class="m">669</span> <span class="m">2014-12-10</span>   <span class="m">19</span>  <span class="m">51</span>              <span class="p">[</span>FreeFood<span class="p">]</span> Cake on top of recycle bin on third floor of clapp
+<span class="m">670</span> <span class="m">2014-12-10</span>   <span class="m">20</span>  <span class="m">35</span> <span class="p">[</span>FreeFood<span class="p">]</span> Egg Nog<span class="p">,</span> Cookies<span class="p">,</span> Chips<span class="p">,</span> Apple Cider<span class="p">,</span> Pumpkin Pie<span class="p">,</span> Candy Canes<span class="o">!</span>
+</code></pre></div>
+<p>That glorious day was Dec 10, 2014, a Wednesday. Perhaps more emails are sent out on certain days of the week? Let’s <strong>plot the mean number of emails for each day of the week</strong>.</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="c1"># split data frame to list of data frames by day of week</span>
+<span class="o">&gt;</span> day.of.week <span class="o">=</span> <span class="kp">split</span><span class="p">(</span>data<span class="p">,</span> <span class="kp">weekdays</span><span class="p">(</span>data<span class="o">$</span><span class="kp">date</span><span class="p">))</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="c1"># order list Sunday, Monday, ... Saturday</span>
+<span class="o">&gt;</span> dow <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;Sunday&#39;</span><span class="p">,</span> <span class="s">&#39;Monday&#39;</span><span class="p">,</span> <span class="s">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s">&#39;Thursday&#39;</span><span class="p">,</span> <span class="s">&#39;Friday&#39;</span><span class="p">,</span> <span class="s">&#39;Saturday&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> day.of.week <span class="o">=</span> day.of.week<span class="p">[</span>dow<span class="p">]</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="c1"># create table for number of emails sent and total number of days</span>
+<span class="o">&gt;</span> emails <span class="o">=</span> <span class="kp">sapply</span><span class="p">(</span>day.of.week<span class="p">,</span> <span class="kp">nrow</span><span class="p">)</span>
+<span class="o">&gt;</span> days   <span class="o">=</span> <span class="kp">table</span><span class="p">(</span><span class="kp">weekdays</span><span class="p">(</span>school.days<span class="p">))</span>
+<span class="o">&gt;</span> days   <span class="o">=</span> days<span class="p">[</span>dow<span class="p">]</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> barplot<span class="p">(</span>emails <span class="o">/</span> days<span class="p">,</span> main <span class="o">=</span> <span class="s">&#39;Avg # emails each day of week&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
+    <center><img style="middle;width:100%;height:100%" src="/freefood_avgemails.jpg"></center>
+</div>
+
+<p>To see whether these differences in average emails are significant or are just noise, we need to draw some confidence intervals. We’ll start by making some assumptions:</p>
+
+<ol>
+<li> For each day of the week D, the numbers of emails $X^{(D)}<em>1, X^{(D)}</em>2,....,X^{(D)}_{nD}$ sent on that day all follow the same probability distribution with mean μD and standard deviation σD.</li>
+<li> The number of emails sent on any day does not depend on the numbers of emails sent on any past days</li>
+</ol>
+
+<p>Taken together, these are the <em>independent(2) and identically distributed (1)</em> assumptions on data that ~ 90% of statistical techniques rely on. This page gives another succinct explanation of <a href="http://math.stackexchange.com/questions/466927/independent-identically-distributed-iid-random-variables">independent, identically distributed</a> random variables.</p>
+
+<p>The central limit theorem says that, as nD increases the quantity </p>
+
+<div class="equation" data-expr="\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i"></div> 
+
+<p>(which is the average of the data values) gets closer and closer to a <a href="http://mathworld.wolfram.com/NormalDistribution.html">Gaussian distribution</a> with mean μD and standard deviation $\frac{ \sigma D}{ \sqrt{nD}}$.</p>
+
+<p>This just means that the average number of emails sent on Fridays differs from the “real” average by something around $\frac{ \sigma D}{ \sqrt{nD}}$. If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, $$\frac{1}{nD} \sum<em>{i=1}^{nD} X^{(D)}</em>i$$ will be within $\frac{ \sigma D}{ \sqrt{nD}}$ units about 68% of the time. So if we draw on our graph brackets centered on </p>
+
+<p>$$\frac{1}{nD} \sum<em>{i=1}^{nD} X^{(D)}</em>i$$ with radius $\frac{ \sigma D}{ \sqrt{nD}}$ we’ve just constructed a ~68% confidence interval.</p>
+
+<p>Aside: we actually don’t know what $σ<em>D$ is but we can approximate it with<br>
+ $$\sqrt{\frac{1}{n</em>D}\sum<em>{i=1}^{n</em>D}(x_i^{(D)}-average(x^{(D)}))^2}$$,
+and the resulting estimate of $\frac{ \sigma D}{ \sqrt{nD}}$ is called the <em>standard error of the mean</em>. Why this approximation? </p>
+
+<p>Because $\sigma D^2$ is defined as 
+$$ E[(X^{(D)}-µ<em>D)^2]$$
+ by the law of large numbers,
+ $$ \frac{1}{n</em>D}\sum<em>{i=1}^{n</em>D}(x_i^{(D)}-average(x^{(D)}))^2$$
+converges to $\sigma D^2$. Now we’re ready to add error bars to the plot.</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="c1"># create a function to compute standard error for a</span>
+<span class="o">&gt;</span> <span class="c1"># set of emails sent on a particular day</span>
+<span class="o">&gt;</span> compute.se <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>df<span class="p">)</span>
+<span class="o">&gt;</span> <span class="p">{</span>
+<span class="o">&gt;</span>   dow <span class="o">=</span> <span class="kp">unique</span><span class="p">(</span><span class="kp">weekdays</span><span class="p">(</span>df<span class="o">$</span><span class="kp">date</span><span class="p">))</span>
+<span class="o">&gt;</span>   <span class="kp">stopifnot</span><span class="p">(</span><span class="kp">length</span><span class="p">(</span>dow<span class="p">)</span> <span class="o">==</span> <span class="m">1</span><span class="p">)</span>
+<span class="o">&gt;</span>   
+<span class="o">&gt;</span>   days <span class="o">=</span> school.days<span class="p">[</span><span class="kp">weekdays</span><span class="p">(</span>school.days<span class="p">)</span> <span class="o">==</span> dow<span class="p">]</span>
+<span class="o">&gt;</span>   n <span class="o">=</span> <span class="kp">length</span><span class="p">(</span>days<span class="p">)</span>
+<span class="o">&gt;</span>   
+<span class="o">&gt;</span>   count <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="kp">length</span><span class="p">(</span>days<span class="p">))</span>
+<span class="o">&gt;</span>   <span class="kp">names</span><span class="p">(</span>count<span class="p">)</span> <span class="o">=</span> days
+<span class="o">&gt;</span>   count<span class="p">[</span><span class="kp">names</span><span class="p">(</span><span class="kp">table</span><span class="p">(</span>df<span class="o">$</span><span class="kp">date</span><span class="p">))]</span> <span class="o">=</span> <span class="kp">table</span><span class="p">(</span>df<span class="o">$</span><span class="kp">date</span><span class="p">)</span>
+<span class="o">&gt;</span>   
+<span class="o">&gt;</span>   <span class="kr">return</span><span class="p">(</span> sd<span class="p">(</span>count<span class="p">)</span> <span class="o">/</span> <span class="kp">sqrt</span><span class="p">(</span>n<span class="p">)</span> <span class="p">)</span>  
+<span class="o">&gt;</span> <span class="p">}</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> se <span class="o">=</span> <span class="kp">sapply</span><span class="p">(</span>day.of.week<span class="p">,</span> compute.se<span class="p">)</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="c1"># barplot( ) returns horizontal position of the days</span>
+<span class="o">&gt;</span> x  <span class="o">=</span> barplot<span class="p">(</span>emails <span class="o">/</span> days<span class="p">,</span> main <span class="o">=</span> <span class="s">&#39;Avg # emails each day of week&#39;</span><span class="p">,</span> ylim <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">))</span>
+<span class="o">&gt;</span> arrows<span class="p">(</span>x<span class="p">,</span> emails <span class="o">/</span> days <span class="o">+</span> se<span class="p">,</span> x<span class="p">,</span> emails <span class="o">/</span> days <span class="o">-</span> se<span class="p">,</span> angle <span class="o">=</span> <span class="m">90</span><span class="p">,</span> code <span class="o">=</span> <span class="m">3</span><span class="p">,</span> length <span class="o">=</span> <span class="m">0.1</span><span class="p">)</span>
+</code></pre></div>
+<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
+    <center><img style="middle;width:100%;height:100%" src="/freefood_avgemails_perday.jpg"></center>
+</div>
+
+<p>Since Friday’s 68% confidence interval doesn’t overlap with that of any other day of the week, we can safely say emails are sent out more frequently on Fridays. On the other hand the Sunday, Wednesday, Thursday, Saturday intervals overlap by a lot, so the corresponding population means are likely not that different.</p>
+
+<p>What about time of day?</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> hist<span class="p">(</span>data<span class="o">$</span>hour<span class="p">,</span> breaks <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span><span class="m">-0.5</span><span class="p">,</span> <span class="m">23.5</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> xlab <span class="o">=</span> <span class="s">&#39;Hour of day&#39;</span><span class="p">,</span> freq <span class="o">=</span> <span class="bp">F</span><span class="p">,</span>
+<span class="o">&gt;</span>      main <span class="o">=</span> <span class="s">&#39;Free food emails by hour of day&#39;</span><span class="p">,</span> ylab <span class="o">=</span> <span class="s">&#39;Proportion of emails&#39;</span><span class="p">,</span> xaxt <span class="o">=</span> <span class="s">&#39;n&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> axis<span class="p">(</span>side <span class="o">=</span> <span class="m">1</span><span class="p">,</span> at <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span><span class="m">-0.5</span><span class="p">,</span> <span class="m">23.5</span><span class="p">,</span> length.out <span class="o">=</span> <span class="m">9</span><span class="p">),</span>
+<span class="o">&gt;</span>      labels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;12am&#39;</span><span class="p">,</span> <span class="s">&#39;3am&#39;</span><span class="p">,</span> <span class="s">&#39;6am&#39;</span><span class="p">,</span> <span class="s">&#39;9am&#39;</span><span class="p">,</span> <span class="s">&#39;12pm&#39;</span><span class="p">,</span> <span class="s">&#39;3pm&#39;</span><span class="p">,</span> <span class="s">&#39;6pm&#39;</span><span class="p">,</span> <span class="s">&#39;9pm&#39;</span><span class="p">,</span> <span class="s">&#39;12am&#39;</span><span class="p">))</span>
+</code></pre></div>
+<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
+    <center><img style="middle;width:70%;height:70%" src="/freefood_emailsperhour.jpg"></center>
+</div>
+
+<p>The distribution is somewhat bimodal; there’s a small cluster scattered around noon and a larger cluster scattered around 6pm. Not many to expect from 11pm to 10am, which makes sense. I was curious about that one email sent out at 3 in the morning, so I checked:</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> data<span class="p">[</span>data<span class="o">$</span>hour <span class="o">==</span> <span class="m">3</span><span class="p">,]</span>
+          date hour min                         subj
+<span class="m">752</span> <span class="m">2015-02-15</span>    <span class="m">3</span>  <span class="m">17</span> <span class="p">[</span>FreeFood<span class="p">]</span> wallet at terrace
+</code></pre></div>
+<p>It turns out a small fraction of the emails sent to the listserv are unrelated to food. Not enough to justify the trouble of filtering out all the non-food related ones, but it’s just something to keep in mind.</p>
+
+<p>Now let’s see what people are putting on the subject lines. I’m going to do the simple task of collecting all words from all email subject lines and looking at which words ones come up most often (I also did some preprocessing so words like “Pizza” and “PIZZA” and “PiZZa!” are treated as the same). The function <strong>subject.line.words</strong> does this</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r">subject.line.words <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>data<span class="p">)</span>
+<span class="p">{</span>
+  words <span class="o">=</span> <span class="kp">unlist</span><span class="p">(</span><span class="kp">lapply</span><span class="p">(</span>data<span class="o">$</span>subj<span class="p">,</span> <span class="kr">function</span><span class="p">(</span>subj<span class="p">)</span> <span class="kp">strsplit</span><span class="p">(</span>subj<span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">)))</span>  <span class="c1"># split subject line into individual words</span>
+  words <span class="o">=</span> words<span class="p">[</span>words <span class="o">!=</span> <span class="s">&#39;[FreeFood]&#39;</span><span class="p">]</span>
+  words <span class="o">=</span> <span class="kp">tolower</span><span class="p">(</span>words<span class="p">)</span>  <span class="c1"># make all words lowercase</span>
+  words <span class="o">=</span> <span class="kp">sapply</span><span class="p">(</span>words<span class="p">,</span> <span class="kr">function</span><span class="p">(</span>word<span class="p">)</span> <span class="kp">gsub</span><span class="p">(</span><span class="s">&quot;[[:punct:]]&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> word<span class="p">))</span>  <span class="c1"># delete any punctuation marks</span>
+  words.freq <span class="o">=</span> <span class="kp">table</span><span class="p">(</span>words<span class="p">)</span>
+  <span class="kr">return</span><span class="p">(</span><span class="kp">sort</span><span class="p">(</span>words.freq<span class="p">,</span> decreasing <span class="o">=</span> <span class="bp">T</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Let’s look at all the emails first. The 30 most common subject line words are:</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> subject.line.words<span class="p">(</span>data<span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">]</span>
+words
+        <span class="kr">in</span>        and                  food      frist      pizza       free    cookies sandwiches         of 
+       <span class="m">156</span>        <span class="m">103</span>         <span class="m">64</span>         <span class="m">64</span>         <span class="m">59</span>         <span class="m">58</span>         <span class="m">54</span>         <span class="m">44</span>         <span class="m">44</span>         <span class="m">41</span> 
+       the         at      salad       room     center      chips      dodge       from     murray       club 
+        <span class="m">31</span>         <span class="m">26</span>         <span class="m">26</span>         <span class="m">25</span>         <span class="m">23</span>         <span class="m">22</span>         <span class="m">20</span>         <span class="m">20</span>         <span class="m">20</span>         <span class="m">18</span> 
+    campus     friend     lounge     olives    chicken      floor    outside   basement    chinese     common 
+        <span class="m">17</span>         <span class="m">17</span>         <span class="m">17</span>         <span class="m">17</span>         <span class="m">14</span>         <span class="m">14</span>         <span class="m">14</span>         <span class="m">13</span>         <span class="m">13</span>         <span class="m">13</span>
+</code></pre></div>
+<p>The subject lines are quite informative about (1) location of free food and (2) the type of food. Looking at the table above, we see that Frist is a popular venue (59 emails), along with Murray-Dodge (20), Friend Center (17), and Campus Club (17). We also note that Pizza (58) is the most-supplied food item, followed by cookies (44) and sandwiches (44).</p>
+
+<p>We can take this in a number of directions. We can find out which foods are closely associated with what locations. We can see if the time of day the email was sent has any effect on subject line content. A fast way of answering the latter question is to simply filter for emails sent during a certain period in the day and call subject.line.words. We do that with emails sent before 3pm:</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> subject.line.words<span class="p">(</span>data<span class="p">[</span>data<span class="o">$</span>hour <span class="o">&lt;</span> <span class="m">15</span><span class="p">,])[</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">]</span>
+words
+        <span class="kr">in</span>        and            sandwiches       food       free      frist         at      salad    cookies 
+        <span class="m">49</span>         <span class="m">38</span>         <span class="m">27</span>         <span class="m">24</span>         <span class="m">18</span>         <span class="m">17</span>         <span class="m">15</span>         <span class="m">14</span>         <span class="m">14</span>         <span class="m">13</span> 
+        of        the     center     friend      pizza     bagels     lounge     mcgraw    rainbow     campus 
+        <span class="m">12</span>         <span class="m">12</span>         <span class="m">10</span>         <span class="m">10</span>         <span class="m">10</span>          <span class="m">8</span>          <span class="m">8</span>          <span class="m">8</span>          <span class="m">8</span>          <span class="m">6</span> 
+   chicken       club     coffee  chocolate       from       lgbt       room    tonight      wraps      bread 
+         <span class="m">6</span>          <span class="m">6</span>          <span class="m">6</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">4</span>
+</code></pre></div>
+<p>And emails sent after 3pm:</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> subject.line.words<span class="p">(</span>data<span class="p">[</span>data<span class="o">$</span>hour <span class="o">&gt;=</span> <span class="m">15</span><span class="p">,])[</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">]</span>
+words
+        <span class="kr">in</span>        and      pizza       food      frist                  free    cookies         of       room 
+       <span class="m">107</span>         <span class="m">65</span>         <span class="m">48</span>         <span class="m">46</span>         <span class="m">44</span>         <span class="m">37</span>         <span class="m">37</span>         <span class="m">31</span>         <span class="m">29</span>         <span class="m">20</span> 
+sandwiches      chips        the      dodge     murray       from     olives      floor     center         at 
+        <span class="m">20</span>         <span class="m">19</span>         <span class="m">19</span>         <span class="m">17</span>         <span class="m">17</span>         <span class="m">15</span>         <span class="m">15</span>         <span class="m">14</span>         <span class="m">13</span>         <span class="m">12</span> 
+  basement       club     common      salad     campus    chinese    outside     indian     lounge     cheese 
+        <span class="m">12</span>         <span class="m">12</span>         <span class="m">12</span>         <span class="m">12</span>         <span class="m">11</span>         <span class="m">11</span>         <span class="m">11</span>         <span class="m">10</span>          <span class="m">9</span>          <span class="m">8</span>
+</code></pre></div>
+<p>This quickly shows that there is a relationship between time of day and subject line content. Namely, that sandwiches are more prevalent during lunch hours and pizza during dinner hours. We can also see that Friend Center is pretty common location before 3pm, but hardly used at all after 3pm.</p>
+
+<p>Let’s do something more sophisticated and frame the same question as a regression problem. We are looking for a math function whose input will be the words in the subject line of an email and whose output will be the best guess for the hour of day the email was sent. For reasons of model flexibility, high dimensionality, and interpretability, we’re going to model the regression function as a classic regression tree. If you haven’t heard of a regression tree before, please read <a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">this page</a> before reading the next section.</p>
+
+<p>To train the regression tree, the matrix of input variables <strong>X</strong> must be in this form: each row $i$ is an individual email and each column $j$ is a word. The matrix entry $x_{ij}$ will be 1 if word $j$ is in the subject line of email $i$, and 0 otherwise. <strong>X</strong> will have number of columns equal to how many unique words are in all the email subjects. In natural language processing, <strong>X</strong> is called a <em>term document matrix</em>.</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>tm<span class="p">)</span>
+<span class="o">&gt;</span> subject.lines <span class="o">=</span> <span class="kp">gsub</span><span class="p">(</span><span class="s">&#39;[[:punct:]]&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span> data<span class="o">$</span>subj<span class="p">)</span>
+<span class="o">&gt;</span> subject.lines <span class="o">=</span> <span class="kp">gsub</span><span class="p">(</span><span class="s">&#39;FreeFood&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> subject.lines<span class="p">)</span>
+<span class="o">&gt;</span> corpus <span class="o">=</span> VCorpus<span class="p">(</span>VectorSource<span class="p">(</span>subject.lines<span class="p">))</span>
+<span class="o">&gt;</span> tdm <span class="o">=</span> TermDocumentMatrix<span class="p">(</span>corpus<span class="p">)</span>
+<span class="o">&gt;</span> tdm <span class="o">=</span> <span class="kp">as.data.frame</span><span class="p">(</span><span class="kp">t</span><span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span>tdm<span class="p">)))</span>
+</code></pre></div>
+<p>In our case, as typically, the term document matrix is sparse (most entries are 0) and high-dimensional (more variables than observations, or more columns than rows). Now we train our regression tree with the package <em>rpart</em>.</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>rpart<span class="p">)</span>
+<span class="o">&gt;</span> tdm<span class="o">$</span>y <span class="o">=</span> data<span class="o">$</span>hour <span class="o">+</span> data<span class="o">$</span>min <span class="o">/</span> <span class="m">60</span>
+<span class="o">&gt;</span> tree <span class="o">=</span> rpart<span class="p">(</span>y <span class="o">~</span> <span class="m">.</span><span class="p">,</span> data <span class="o">=</span> tdm<span class="p">)</span>
+<span class="o">&gt;</span> par<span class="p">(</span>xpd <span class="o">=</span> <span class="kc">NA</span><span class="p">)</span>
+<span class="o">&gt;</span> plot<span class="p">(</span>tree<span class="p">)</span>
+<span class="o">&gt;</span> text<span class="p">(</span>tree<span class="p">)</span>
+</code></pre></div>
+<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
+    <center><img style="middle;width:70%;height:70%" src="/freefood_tree.jpg"></center>
+</div>
+
+<p>In the regression tree above, each fork has a conditional. For instance, bagels &gt;= 0.5 means that the word “bagels” was in the email subject line. If the conditional is true, then you move to the left child node; if false, move to the right one. This step repeats until you reach a terminal node, upon which the predicted time in hours after midnight is given.</p>
+
+<p>“Bagels” turns out to be the single best predictor of time of all the words, predicting 11:24am if present. If “bagels” is not in the subject line, then “sandwiches” is the next best predictor, predicting 2:26pm. If neither “sandwiches” nor “bagels” are in the subject line, then emails having “friend” in the subject line tend to be sent in the early afternoon (1:56pm). Emails with subjects lacking “bagels”, “sandwiches”, and “friend” are all sent later in the afternoon and in the evening.</p>
+
+<p>Our last item to investigate is assocations between words in the free food email subjects lines. Given any two words, say “Sushi” and “Frist” we want to know how often they tend to appear together in an email subject. We want to create an association matrix <strong>A</strong>. <strong>A</strong> will be symmetric and each row and column will be assigned a word. For each row $i$ and column $j$ in the matrix, the entry
+$$a_{ij}=\frac{\text{# emails with both word i and j}} {\text{# emails with either word i or j}}$$</p>
+
+<p>We restrict our scope of words to those that appeared in at least 6 emails. After we have our assocation matrix <strong>A</strong> (which maps 63 words) we visualize it as a network graph. Nodes are words and edges between words indicate an <strong>A</strong> entry of at least 0.15 (thicker edges indicate greater assocation).</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> m <span class="o">=</span> <span class="kp">as.matrix</span><span class="p">(</span>tdm<span class="p">[,</span><span class="o">-</span><span class="kp">ncol</span><span class="p">(</span>tdm<span class="p">)])</span> <span class="o">&gt;</span> <span class="m">0</span>
+<span class="o">&gt;</span> colsums <span class="o">=</span> <span class="kp">apply</span><span class="p">(</span>m<span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="kp">sum</span><span class="p">)</span>
+<span class="o">&gt;</span> m <span class="o">=</span> m<span class="p">[,</span> colsums <span class="o">&gt;=</span> <span class="m">6</span><span class="p">]</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> X <span class="o">=</span> <span class="kp">t</span><span class="p">(</span>m<span class="p">)</span> <span class="o">%*%</span> m
+<span class="o">&gt;</span> Y <span class="o">=</span> <span class="kp">t</span><span class="p">(</span><span class="o">!</span>m<span class="p">)</span> <span class="o">%*%</span> m
+<span class="o">&gt;</span> A <span class="o">=</span> X <span class="o">/</span> <span class="p">(</span>X <span class="o">+</span> Y <span class="o">+</span> <span class="kp">t</span><span class="p">(</span>Y<span class="p">))</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>qgraph<span class="p">)</span>
+<span class="o">&gt;</span> qgraph<span class="p">(</span>A<span class="p">,</span> minimum <span class="o">=</span> <span class="m">0.15</span><span class="p">,</span> border.color <span class="o">=</span> <span class="s">&#39;Gray&#39;</span><span class="p">,</span> labels <span class="o">=</span> <span class="kp">colnames</span><span class="p">(</span>S<span class="p">),</span> label.scale <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> label.cex <span class="o">=</span> <span class="m">0.8</span><span class="p">)</span>
+</code></pre></div>
+<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
+    <center><img style="middle;width:70%;height:70%" src="/freefood_network.jpg"></center>
+</div>
+
+<p>Some interesting ones I found by eyeballing this graph:</p>
+
+<ul>
+<li>  panera – lewis</li>
+<li>  rice – chicken</li>
+<li>  rainbow – lounge (where is that?)</li>
+<li>  indian – food – murray – dodge</li>
+<li>  tea – cupcakes</li>
+</ul>
+
+<hr>
+
+<p>Acknowledgements: Evan Chow ‘16, for providing both the data set and the initial idea for its analysis. This blog post would not exist without your abiding enthusiasm for free food.</p>
+
+<p><script type="text/javascript">
+    var tex = document.getElementsByClassName(&quot;equation&quot;);
+    Array.prototype.forEach.call(tex, function(el) {
+        katex.render(el.getAttribute(&quot;data-expr&quot;), el);
+    });
+</script> </p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2015/09/16/data_at_opower/">
+        A Summer of Data at Opower
+      </a>
+    </h1>
+
+    <span class="post-date">16 Sep 2015</span>
+
+    <p><h6><em>Author: Anna Matlin</em></p>
+
+<div style="float:center;width:100%;height:100%;margin-bottom:10px;">
+    <img style="float:center;width:100%;height:100%" src="/anna1.jpg">
+</div>
+
+<h2><em>What is a data science internship in Silicon Valley like?</em></h2>
+
+<p>I finished my summer internship at Opower a few weeks ago, where I was an engineering intern on the Data Science team. Opower is a tech company that works with utilities to encourage consumers to save energy through behavioral science. Its headquarters are in Arlington, Virginia, where there about 400 employees, and the second office is located in San Francisco, where there are about 200. Opower filed for an IPO in 2014, so I would call it a small-midsize company as opposed to a startup. </p>
+
+<div style="float:middle;width:100%;height:100%;margin-left:auto; margin-right:auto;">
+    <center><img style="middle;width:50%;height:50%" src="/anna2.jpg"></center>
+</div>
+
+<p>When I accepted the offer to work at Opower, it was mid-January and I had just finished taking my last final. I had applied to a program called <a href="http://kpcbfellows.com/">KPCB Fellows</a>, 
+<span style="color:green">APPLY!!!</span>) with a tip from a friend who was a Fellow last year, and I knew it would be an exciting summer. So, I took the plunge.</p>
+
+<h2><strong>Location</strong></h2>
+
+<p>San Francisco, tech capital of the world. I had been to SF before for 5 days through an amazing program called <a href="http://squareup.com/code-camp/college">Square College Code Camp for women in engineering</a>, <span style="color:green">APPLY!!!</span>) but I had done little sightseeing and I didn’t feel like I knew the city at all. My first big challenge before starting was finding a place to live, which required me to learn all the neighborhoods and their respective vibes. The Opower office was in South of Market (SOMA), a neighborhood densely packed with startup offices. I knew that I wanted to live in the Mission, which is full of energy and young professionals. However, the Mission is also the ultimate example of skyrocketing <a href="http://www.nytimes.com/2015/05/23/us/high-rents-elbow-latinos-from-san-franciscos-mission-district.html">SF rent and gentrification</a>. It took me months of searching, but I finally managed to find an apartment that I could afford. Last summer, I stayed in NJ, so living on my own on the other side of the country was an exciting prospect!</p>
+
+<div style="float:middle;width:50%;height:50%;margin-left:auto;margin-right:auto;">
+    <center><img style="text-align:right;width:50%;height:50%" src="/anna3.jpg"></center>
+</div>
+
+<p>I believe that a summer in SF is really what you make of it. My friends and I took full advantage of what the city and the Bay Area had to offer: outings to Dolores Park, free concerts, Muir Woods, Yosemite, Lake Tahoe, food festivals, visits to Berkeley and Stanford, Sunday evenings on the beach, and numerous free events for tech interns (dinner was often free through one event or another). There are endless ways to meet new, extremely interesting people. I made a point of walking to places whenever I could so that, by the end, I felt like I could find my way anywhere.</p>
+
+<h2><strong>Office Space</strong></h2>
+
+<p>The first thing I noticed about Opower was the office, which had an open floor plan. This is pretty common in SF and Silicon Valley in general. Coming in, I didn’t expect to like the open floor plan because of the lack of privacy. I also noticed that the floor was completely lined with these massive windows that let in copious amounts of sunlight. That was a huge plus. Also, it aligned with Opower’s mission of energy efficiency. There was a hum around the office- people were definitely working and not just hanging out. Yet there was still lots of evidence that people liked to have fun; the ironic Justin Bieber cardboard cutout in one pod or the comprehensive collection of Keanu Reeves posters by mine. There were happy hours on Fridays. However, I haven’t yet mentioned the #1 perk of the Opower office: the kitchen.</p>
+
+<p>I’ll try to contain my excitement about the Opower kitchen. Food is a priority at Opower, which makes it my kind of company. For breakfast, I would get yogurt from one of the fridges, cut up a banana, pour in a granola from Berkeley that has ruined granola for me because it’s just so good, and sprinkle in some fresh blueberries. There was always a variety of snacks and instant meals, plus a fridge of drinks, but what really made the kitchen special was that it had all the supplies for a lunch. If you wanted, you could grab some salad mix, fresh vegetables, toast bread with cheese and cold cuts, and have yourself a deliciously fresh lunch. The kitchen was also a watering hole where you could catch up with people you didn’t see around your pod, etc.</p>
+
+<h2><strong>The Team</strong></h2>
+
+<p>I absolutely loved the people I worked with. The people you’re around for 80% of the workday are pretty integral to the work experience, and I definitely lucked out. The Data Science team was about 6 strong, and we were also positioned next to the Data Services team. I was constantly amazed by how knowledgeable, resourceful, and funny my coworkers were. My mentor checked in with me often to make sure that I was keeping up and that I wasn’t out of work. Because of the open office, I felt comfortable just turning around and asking my team a question whenever I needed- and if the person wasn’t there, I would just toss it onto the Slack (group messaging platform) and wait for someone to address it. My pod-mates mostly had computer science degrees and engineering backgrounds, ranging from undergrad to PhD. We went out to lunch together often and engaged in an extremely intense fitness competition via Fitbit. Not to brag or anything, but our team was so cool that management took notice and got the entire office Fitbits.</p>
+
+<h2><strong>The work itself</strong></h2>
+
+<p>By now, you’re probably wondering if I did any work at all this summer. I was at Opower for 10 weeks and I completed two projects that each spanned five. The first project was more research/exploration and the second was direct work with production code that the entire team was writing and reviewing.</p>
+
+<p><strong>Project 1: See if consumer opt-out from Opower’s reports can be explained through demographic factors with a logistic regression first on a small scale and then larger scale.</strong></p>
+
+<p><em><p>Tools/languages: Databricks (hosted cloud service for big data), Pandas, Apache Spark, MLlib, SQL, IPython notebooks/Python</p></em></p>
+
+<p>What was most interesting/challenging: I actually hadn’t coded in Python before coming to Opower, so I learned a new language and a bunch of libraries specifically for data science and machine learning. I learned about precision recall curves as a measure of model strength and how computing clusters handle big jobs. </p>
+
+<p>What was most frustrating: Not understanding what the libraries actually did under the hood. A lot of wrangling with Apache Spark syntax. Most of all, even though the data was straight from utilities, it still had plenty of issues. Data science is honestly not that glamorous most of the time. It is true that 50-80% of time is spent just <a href="http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html">cleaning the data or finding gaps in it and deciding how to move forward </a>.</p>
+
+<p><strong>Who did I work with:</strong> Occasionally got help from other members of the team but mostly just my mentor.</p>
+
+<p><strong>Project 2: Coding up an optimization model for energy disaggregation and unit tests</strong></p>
+
+<p><em><p>Tools/languages: Java, Jenkins, GitHub</em></p></p>
+
+<p>What was most interesting/challenging: doing math on a whiteboard with my mentor and getting to the correct expressions mathematically before putting them into code form! I felt like Matt Damon in Good Will Hunting even though I was totally helpless most of the time and my mentor was guiding me through it. I was so excited that classes like multi-variable calc, linear algebra, and even ORF 307 were useful.</p>
+
+<p>What was most frustrating: Every time I thought I was done- whether it was with the code for the optimizers or the documentation for it, there was always a way to improve or refactor just a bit. Every time our engineering lead commented to let me know that there was still work to do, my heart sank a little. Work projects are very different from school assignments. When you’re at school, you know that you’re done as soon as the deadline passes. At work, you need to submit code that is living and breathing, that other people will likely change and improve. Readability is important to get a good grade at school, but at work it’s possibly even more important than the code itself.</p> 
+
+<p><strong>Who did I work with:</strong> entire team, especially our Engineering Lead because he was reviewing my code.</p>
+
+<p>I learned about Scrum and other strategies for productivity. In particular, I liked that my team had a daily standup meeting every morning to ensure that everyone was on the same page. Everything was transparent- if anyone was having problems, it was completely natural to admit it and ask for help. I also enjoyed that I could work from home, so if I was feeling productive on a weekday evening I could log some hours and then skip a few later that week if I needed to attend an event.</p>
+
+<h2><strong>KPCB</strong></h2>
+
+<p>Kleiner Perkins Caulfield Byers is an established venture capital fund located in Menlo Park, CA. Being a KPCB Fellow was a truly incredible “in” to the Silicon Valley community, startups, and venture capital. There were about 80 other fellows in the program- most were engineering, a few were product management, and a few were design. The fellows were from all over the country- Princeton had five. There were some international fellows as well. The events started with a welcome reception in late June and ended in early August with a kayaking day trip- we had approximately 2-3 events a week. We had the incredible chance to do a roundtable with John Doerr, a renowned venture capitalist (VC) and a partner at KPCB. We heard from Uber CPO Jeff Holden about how he makes important career decisions. The events were always super efficient-- buses everywhere-- and really fostered a sense of community between fellows. One of my favorite moments during the summer was when I was just walking down Market Street after work and I bumped into another fellow- we recognized each other because we were both wearing KPCB jackets, and I joined him on a UNIQLO expedition for pants.</p> 
+
+<div style="float:middle;width:100%;height:100%;margin-left:auto; margin-right; auto;">
+    <img style="middle;width:100%;height:100%" src="/anna4.jpg">    
+<p><em>(Source: KPCB Fellows Program)</em></p>
+</div>
+
+<hr>
+
+<div style="middle;width:70%;height:70%;margin-right:auto; margin-left:auto;">
+    <center><img style="middle;width:50%;height:50%" src="/anna5.jpg"></center>
+</div>
+
+<p>Honestly, my experience as a data science intern day-to-day was very similar to that of a software engineering intern. The tools we use are perhaps a bit different, though often the same. Also, I’m sure that there are different kinds of data science internships in SF- some that are more academic and mathy, and some that are more like mine. I did do some math at times, but it wasn’t like my mentor and I spent weeks deciding what models to use, or developing new ones. </p>
+
+<p>I still think data science is cool even after a summer of working in it, so that seems to be a good sign. There is a lot of muck and cleaning, but my favorite part is the search for some golden nugget of insight. When I finally get a meaningful coefficient as an output, or better yet, find a graph that just instantly grabs people with its visual story, that is when I feel that data science is the coolest industry out there. Until next time, Princeton Data Science!</p>
+
+<hr>
+
+<p>If you have any questions for me about Princeton DataSci or data science in the Bay Area, feel free to shoot me an email at <a href="mailto:amatlin@princeton.edu">amatlin@princeton.edu</a>.</p>
+
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <span class="pagination-item older">Older</span>
+  
+  
+    <span class="pagination-item newer">Newer</span>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+    
+  <!-- Added by Francine Camacho and managed by her gmail account. -->  
+  <!-- Google Analytics --> 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61971342-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

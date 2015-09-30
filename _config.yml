@@ -12,7 +12,7 @@ relative_permalinks: true
 title:               Princeton Data Science 
 tagline:             'Blog'
 description:         'We hope to create a community of students interested in data science careers, and to provide opportunities to sharpen data-oriented skills.'
-url:                 http://www.princeton.edu/~datasci/
+url:                 http://www.princeton-data-science.github.io
 baseurl:             /
 paginate:            5
 

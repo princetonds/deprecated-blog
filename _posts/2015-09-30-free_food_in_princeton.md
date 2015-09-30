@@ -2,6 +2,7 @@
 layout: post
 title: Free Food in Princeton 
 ---
+{% include katex_import.html %} 
 <h6>*Author: Felix Xiao*
 
 ##*Predicting Free Food at Princeton*
@@ -41,7 +42,11 @@ That glorious day was Dec 10, 2014, a Wednesday. Perhaps more emails are sent ou
 </div>
 To see whether these differences in average emails are significant or are just noise, we need to draw some confidence intervals. We’ll start by making some assumptions:1.	For each day of the week D, the numbers of emails $X^{(D)}_1, X^{(D)}_2,....,X^{(D)}_{nD}$ sent on that day all follow the same probability distribution with mean μD and standard deviation σD.2.	The number of emails sent on any day does not depend on the numbers of emails sent on any past daysTaken together, these are the *independent(2) and identically distributed (1)* assumptions on data that ~ 90% of statistical techniques rely on. This page gives another succinct explanation of [independent, identically distributed] (http://math.stackexchange.com/questions/466927/independent-identically-distributed-iid-random-variables) random variables.
 
-The central limit theorem says that, as nD increases the quantity $$\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i$$  (which is the average of the data values) gets closer and closer to a [Gaussian distribution] (http://mathworld.wolfram.com/NormalDistribution.html) with mean μD and standard deviation $\frac{ \sigma D}{ \sqrt{nD}}$.
+The central limit theorem says that, as nD increases the quantity 
+{% raw %}
+<div class="equation" data-expr="\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i"></div> 
+{% endraw %}
+(which is the average of the data values) gets closer and closer to a [Gaussian distribution] (http://mathworld.wolfram.com/NormalDistribution.html) with mean μD and standard deviation $\frac{ \sigma D}{ \sqrt{nD}}$.
 
 This just means that the average number of emails sent on Fridays differs from the “real” average by something around $\frac{ \sigma D}{ \sqrt{nD}}$. If nD increases and we have more Fridays from which to collect listserv data, then the difference will shrink. This is why more data leads to better estimates. For an (approximately) Gaussian distribution, $$\frac{1}{nD} \sum_{i=1}^{nD} X^{(D)}_i$$ will be within $\frac{ \sigma D}{ \sqrt{nD}}$ units about 68% of the time. So if we draw on our graph brackets centered on 
 
@@ -101,4 +106,4 @@ Some interesting ones I found by eyeballing this graph:
 * 	rice – chicken*	rainbow – lounge (where is that?)*	indian – food – murray – dodge*	tea – cupcakes
 
 
-----------------------------<p>Acknowledgements: Evan Chow ‘16, for providing both the data set and the initial idea for its analysis. This blog post would not exist without your abiding enthusiasm for free food.</p>
+----------------------------<p>Acknowledgements: Evan Chow ‘16, for providing both the data set and the initial idea for its analysis. This blog post would not exist without your abiding enthusiasm for free food.</p>{% include katex_render.html %} 
