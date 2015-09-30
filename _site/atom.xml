@@ -4,7 +4,7 @@
  <title>Princeton Data Science</title>
  <link href="http://www.princeton-data-science.github.io/atom.xml" rel="self"/>
  <link href="http://www.princeton-data-science.github.io/"/>
- <updated>2015-09-30T01:01:48-04:00</updated>
+ <updated>2015-09-30T10:48:10-04:00</updated>
  <id>http://www.princeton-data-science.github.io</id>
  <author>
    <name>Francine Camacho</name>
@@ -17,7 +17,7 @@
    <link href="http://www.princeton-data-science.github.io/2015/09/30/free_food_at_princeton/"/>
    <updated>2015-09-30T00:00:00-04:00</updated>
    <id>http://www.princeton-data-science.github.io/2015/09/30/free_food_at_princeton</id>
-   <content type="html">&lt;p&gt;&lt;h6&gt;&lt;em&gt;Author: Felix Xiao&lt;/em&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;h6&gt;&lt;em&gt;Author: Felix Xiao &amp;#39;16&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2&gt;&lt;em&gt;Predicting Free Food at Princeton&lt;/em&gt;&lt;/h2&gt;
 
@@ -220,7 +220,7 @@
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;      labels &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;12am&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;3am&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;6am&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;9am&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;12pm&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;3pm&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;6pm&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;9pm&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;12am&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div style=&quot;middle;width:70%;height:70%;margin-right:auto; margin-left:auto;&quot;&gt;
-    &lt;center&gt;&lt;img style=&quot;middle;width:80%;height:80%&quot; src=&quot;/freefood_emailsperhour.jpg&quot;&gt;&lt;/center&gt;
+    &lt;center&gt;&lt;img style=&quot;middle;width:100%;height:100%&quot; src=&quot;/freefood_emailsperhour.jpg&quot;&gt;&lt;/center&gt;
 &lt;/div&gt;
 
 &lt;p&gt;The distribution is somewhat bimodal; there’s a small cluster scattered around noon and a larger cluster scattered around 6pm. Not many to expect from 11pm to 10am, which makes sense. I was curious about that one email sent out at 3 in the morning, so I checked:&lt;/p&gt;

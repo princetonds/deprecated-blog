@@ -3,7 +3,7 @@ layout: post
 title: Free Food at Princeton 
 ---
 
-<h6>*Author: Felix Xiao*
+<h6>*Author: Felix Xiao '16*
 
 ##*Predicting Free Food at Princeton*
 
