@@ -5,6 +5,7 @@ title: Free Food at Princeton
 
 <h6>*Author: Felix Xiao*
 
+#Predicting Free Food at Princeton
 Princeton has a [Free Food Listserv](http://www.universitypressclub.com/archive/2011/04/usg-knows-what-we-want/). Here’s a brunch of emails sent on it a while ago:
 
 ```{r}
