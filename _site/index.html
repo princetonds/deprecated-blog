@@ -353,41 +353,109 @@
   <span class="kr">return</span><span class="p">(</span><span class="kp">sort</span><span class="p">(</span>words.freq<span class="p">,</span> decreasing <span class="o">=</span> <span class="bp">T</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Let’s look at all the emails first. The 30 most common subject line words are:
-```{r}</p>
-
-<blockquote>
-<p>subject.line.words(data)[1:30]
-words
-        in        and            sandwiches       food       free      frist         at      salad    cookies 
-        49         38         27         24         18         17         15         14         14         13 
-        of        the     center     friend      pizza     bagels     lounge     mcgraw    rainbow     campus 
-        12         12         10         10         10          8          8          8          8          6 
-   chicken       club     coffee  chocolate       from       lgbt       room    tonight      wraps      bread 
-         6          6          6          5          5          5          5          5          5          4 
-```
-The subject lines are quite informative about (1) location of free food and (2) the type of food. Looking at the table above, we see that Frist is a popular venue (59 emails), along with Murray-Dodge (20), Friend Center (17), and Campus Club (17). We also note that Pizza (58) is the most-supplied food item, followed by cookies (44) and sandwiches (44).</p>
-</blockquote>
+<p>Let’s look at all the emails first. The 30 most common subject line words are:</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> subject.line.words<span class="p">(</span>data<span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">]</span>
+<span class="o">&gt;</span> words
+<span class="kr">in</span>  <span class="m">156</span>
+and <span class="m">103</span>
+    <span class="m">64</span>
+food    <span class="m">64</span>
+frist   <span class="m">59</span>
+pizza   <span class="m">58</span>
+free    <span class="m">54</span>
+cookies <span class="m">44</span>
+sandwiches  <span class="m">44</span>
+of  <span class="m">41</span>
+the <span class="m">31</span>
+at  <span class="m">26</span>
+salad   <span class="m">26</span>
+room    <span class="m">25</span>
+center  <span class="m">23</span>
+chips   <span class="m">22</span>
+dodge   <span class="m">20</span>
+from    <span class="m">20</span>
+murray  <span class="m">20</span>
+club    <span class="m">18</span>
+campus  <span class="m">17</span>
+friend  <span class="m">17</span>
+lounge  <span class="m">17</span>
+olives  <span class="m">17</span>
+chicken <span class="m">14</span>
+floor   <span class="m">14</span>
+outside <span class="m">14</span>
+basement    <span class="m">13</span>
+chinese <span class="m">13</span>
+common  <span class="m">13</span>
+</code></pre></div>
+<p>The subject lines are quite informative about (1) location of free food and (2) the type of food. Looking at the table above, we see that Frist is a popular venue (59 emails), along with Murray-Dodge (20), Friend Center (17), and Campus Club (17). We also note that Pizza (58) is the most-supplied food item, followed by cookies (44) and sandwiches (44).</p>
 
 <p>We can take this in a number of directions. We can find out which foods are closely associated with what locations. We can see if the time of day the email was sent has any effect on subject line content. A fast way of answering the latter question is to simply filter for emails sent during a certain period in the day and call subject.line.words. We do that with emails sent before 3pm:</p>
 <div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> subject.line.words<span class="p">(</span>data<span class="p">[</span>data<span class="o">$</span>hour <span class="o">&lt;</span> <span class="m">15</span><span class="p">,])[</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">]</span>
 words
-        <span class="kr">in</span>        and            sandwiches       food       free      frist         at      salad    cookies 
-        <span class="m">49</span>         <span class="m">38</span>         <span class="m">27</span>         <span class="m">24</span>         <span class="m">18</span>         <span class="m">17</span>         <span class="m">15</span>         <span class="m">14</span>         <span class="m">14</span>         <span class="m">13</span> 
-        of        the     center     friend      pizza     bagels     lounge     mcgraw    rainbow     campus 
-        <span class="m">12</span>         <span class="m">12</span>         <span class="m">10</span>         <span class="m">10</span>         <span class="m">10</span>          <span class="m">8</span>          <span class="m">8</span>          <span class="m">8</span>          <span class="m">8</span>          <span class="m">6</span> 
-   chicken       club     coffee  chocolate       from       lgbt       room    tonight      wraps      bread 
-         <span class="m">6</span>          <span class="m">6</span>          <span class="m">6</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">5</span>          <span class="m">4</span>
+<span class="kr">in</span>  <span class="m">49</span>
+and <span class="m">38</span>
+    <span class="m">27</span>
+sandwiches  <span class="m">24</span>
+food    <span class="m">18</span>
+free    <span class="m">17</span>
+frist   <span class="m">15</span>
+at  <span class="m">14</span>
+salad   <span class="m">14</span>
+cookies <span class="m">13</span>
+of  <span class="m">12</span>
+the <span class="m">12</span>
+center  <span class="m">10</span>
+friend  <span class="m">10</span>
+pizza   <span class="m">10</span>
+bagels  <span class="m">8</span>
+lounge  <span class="m">8</span>
+mcgraw  <span class="m">8</span>
+rainbow <span class="m">8</span>
+campus  <span class="m">6</span>
+chicken <span class="m">6</span>
+club    <span class="m">6</span>
+coffee  <span class="m">6</span>
+chocolate   <span class="m">5</span>
+from    <span class="m">5</span>
+lgbt    <span class="m">5</span>
+room    <span class="m">5</span>
+tonight <span class="m">5</span>
+wraps   <span class="m">5</span>
+bread   <span class="m">4</span>
 </code></pre></div>
 <p>And emails sent after 3pm:</p>
 <div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> subject.line.words<span class="p">(</span>data<span class="p">[</span>data<span class="o">$</span>hour <span class="o">&gt;=</span> <span class="m">15</span><span class="p">,])[</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">]</span>
 words
-        <span class="kr">in</span>        and      pizza       food      frist                  free    cookies         of       room 
-       <span class="m">107</span>         <span class="m">65</span>         <span class="m">48</span>         <span class="m">46</span>         <span class="m">44</span>         <span class="m">37</span>         <span class="m">37</span>         <span class="m">31</span>         <span class="m">29</span>         <span class="m">20</span> 
-sandwiches      chips        the      dodge     murray       from     olives      floor     center         at 
-        <span class="m">20</span>         <span class="m">19</span>         <span class="m">19</span>         <span class="m">17</span>         <span class="m">17</span>         <span class="m">15</span>         <span class="m">15</span>         <span class="m">14</span>         <span class="m">13</span>         <span class="m">12</span> 
-  basement       club     common      salad     campus    chinese    outside     indian     lounge     cheese 
-        <span class="m">12</span>         <span class="m">12</span>         <span class="m">12</span>         <span class="m">12</span>         <span class="m">11</span>         <span class="m">11</span>         <span class="m">11</span>         <span class="m">10</span>          <span class="m">9</span>          <span class="m">8</span>
+<span class="kr">in</span>  <span class="m">107</span>
+and <span class="m">65</span>
+pizza   <span class="m">48</span>
+food    <span class="m">46</span>
+frist   <span class="m">44</span>
+        <span class="m">37</span>
+free    <span class="m">37</span>
+cookies <span class="m">31</span>
+of  <span class="m">29</span>
+room    <span class="m">20</span>
+sandwiches  <span class="m">20</span>
+chips   <span class="m">19</span>
+the <span class="m">19</span>
+dodge   <span class="m">17</span>
+murray  <span class="m">17</span>
+from    <span class="m">15</span>
+olives  <span class="m">15</span>
+floor   <span class="m">14</span>
+center  <span class="m">13</span>
+at  <span class="m">12</span>
+basement    <span class="m">12</span>
+club    <span class="m">12</span>
+common  <span class="m">12</span>
+salad   <span class="m">12</span>
+campus  <span class="m">11</span>
+chinese <span class="m">11</span>
+outside <span class="m">11</span>
+indian  <span class="m">10</span>
+lounge  <span class="m">9</span>
+cheese  <span class="m">8</span>
 </code></pre></div>
 <p>This quickly shows that there is a relationship between time of day and subject line content. Namely, that sandwiches are more prevalent during lunch hours and pizza during dinner hours. We can also see that Friend Center is pretty common location before 3pm, but hardly used at all after 3pm.</p>
 
@@ -437,7 +505,7 @@ sandwiches      chips        the      dodge     murray       from     olives    
 <span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>qgraph<span class="p">)</span>
 <span class="o">&gt;</span> qgraph<span class="p">(</span>A<span class="p">,</span> minimum <span class="o">=</span> <span class="m">0.15</span><span class="p">,</span> border.color <span class="o">=</span> <span class="s">&#39;Gray&#39;</span><span class="p">,</span> labels <span class="o">=</span> <span class="kp">colnames</span><span class="p">(</span>S<span class="p">),</span> label.scale <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> label.cex <span class="o">=</span> <span class="m">0.8</span><span class="p">)</span>
 </code></pre></div>
-<div style="middle;width:85%;height:85%;margin-right:auto; margin-left:auto;">
+<div style="middle;width:100%;height:100%;margin-right:auto; margin-left:auto;">
     <center><img style="middle;width:100%;height:100%" src="/freefood_network.jpg"></center>
 </div>
 

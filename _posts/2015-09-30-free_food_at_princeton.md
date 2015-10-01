@@ -121,22 +121,19 @@ Now we’re ready to add error bars to the plot.
 > data[data$hour == 3,]          date hour min                         subj752 2015-02-15    3  17 [FreeFood] wallet at terrace```
 It turns out a small fraction of the emails sent to the listserv are unrelated to food. Not enough to justify the trouble of filtering out all the non-food related ones, but it’s just something to keep in mind.Now let’s see what people are putting on the subject lines. I’m going to do the simple task of collecting all words from all email subject lines and looking at which words ones come up most often (I also did some preprocessing so words like “Pizza” and “PIZZA” and “PiZZa!” are treated as the same). The function **subject.line.words** does this```{r} 
 subject.line.words = function(data){  words = unlist(lapply(data$subj, function(subj) strsplit(subj, ' ')))  # split subject line into individual words  words = words[words != '[FreeFood]']  words = tolower(words)  # make all words lowercase  words = sapply(words, function(word) gsub("[[:punct:]]", "", word))  # delete any punctuation marks  words.freq = table(words)  return(sort(words.freq, decreasing = T))}```
-Let’s look at all the emails first. The 30 most common subject line words are:```{r}
+Let’s look at all the emails first. The 30 most common subject line words are:
+```{r}
+
 > subject.line.words(data)[1:30]
 > words
-        in        and            sandwiches       food       free      frist         at      salad    cookies 
-        49         38         27         24         18         17         15         14         14         13 
-        of        the     center     friend      pizza     bagels     lounge     mcgraw    rainbow     campus 
-        12         12         10         10         10          8          8          8          8          6 
-   chicken       club     coffee  chocolate       from       lgbt       room    tonight      wraps      bread 
-         6          6          6          5          5          5          5          5          5          4 
+in	156and	103	64food	64frist	59pizza	58free	54cookies	44sandwiches	44of	41the	31at	26salad	26room	25center	23chips	22dodge	20from	20murray	20club	18campus	17friend	17lounge	17olives	17chicken	14floor	14outside	14basement	13chinese	13common	13
 ```
 The subject lines are quite informative about (1) location of free food and (2) the type of food. Looking at the table above, we see that Frist is a popular venue (59 emails), along with Murray-Dodge (20), Friend Center (17), and Campus Club (17). We also note that Pizza (58) is the most-supplied food item, followed by cookies (44) and sandwiches (44).We can take this in a number of directions. We can find out which foods are closely associated with what locations. We can see if the time of day the email was sent has any effect on subject line content. A fast way of answering the latter question is to simply filter for emails sent during a certain period in the day and call subject.line.words. We do that with emails sent before 3pm:```{r}
-> subject.line.words(data[data$hour < 15,])[1:30]words        in        and            sandwiches       food       free      frist         at      salad    cookies         49         38         27         24         18         17         15         14         14         13         of        the     center     friend      pizza     bagels     lounge     mcgraw    rainbow     campus         12         12         10         10         10          8          8          8          8          6    chicken       club     coffee  chocolate       from       lgbt       room    tonight      wraps      bread          6          6          6          5          5          5          5          5          5          4```
+> subject.line.words(data[data$hour < 15,])[1:30]wordsin	49and	38	27sandwiches	24food	18free	17frist	15at	14salad	14cookies	13of	12the	12center	10friend	10pizza	10bagels	8lounge	8mcgraw	8rainbow	8campus	6chicken	6club	6coffee	6chocolate	5from	5lgbt	5room	5tonight	5wraps	5bread	4```
 And emails sent after 3pm:
 
 ```{r}
-> subject.line.words(data[data$hour >= 15,])[1:30]words        in        and      pizza       food      frist                  free    cookies         of       room        107         65         48         46         44         37         37         31         29         20 sandwiches      chips        the      dodge     murray       from     olives      floor     center         at         20         19         19         17         17         15         15         14         13         12   basement       club     common      salad     campus    chinese    outside     indian     lounge     cheese         12         12         12         12         11         11         11         10          9          8```
+> subject.line.words(data[data$hour >= 15,])[1:30]wordsin	107and	65pizza	48food	46frist	44	    37free	37cookies	31of	29room	20sandwiches	20chips	19the	19dodge	17murray	17from	15olives	15floor	14center	13at	12basement	12club	12common	12salad	12campus	11chinese	11outside	11indian	10lounge	9cheese	8```
 <p>This quickly shows that there is a relationship between time of day and subject line content. Namely, that sandwiches are more prevalent during lunch hours and pizza during dinner hours. We can also see that Friend Center is pretty common location before 3pm, but hardly used at all after 3pm.</p>Let’s do something more sophisticated and frame the same question as a regression problem. We are looking for a math function whose input will be the words in the subject line of an email and whose output will be the best guess for the hour of day the email was sent. For reasons of model flexibility, high dimensionality, and interpretability, we’re going to model the regression function as a classic regression tree. If you haven’t heard of a regression tree before, please read [this page] (http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) before reading the next section.To train the regression tree, the matrix of input variables **X** must be in this form: each row *i* is an individual email and each column *j* is a word. The matrix entry,
 {% raw %}
 <div class="equation" data-expr="x_{ij}"></div> 
@@ -157,7 +154,7 @@ In the regression tree above, each fork has a conditional. For instance, bagels 
 
 ```{r}
 > m = as.matrix(tdm[,-ncol(tdm)]) > 0> colsums = apply(m, 2, sum)> m = m[, colsums >= 6]>> X = t(m) %*% m> Y = t(!m) %*% m> A = X / (X + Y + t(Y))>> library(qgraph)> qgraph(A, minimum = 0.15, border.color = 'Gray', labels = colnames(S), label.scale = F, label.cex = 0.8)```
-<div style="middle;width:85%;height:85%;margin-right:auto; margin-left:auto;">
+<div style="middle;width:100%;height:100%;margin-right:auto; margin-left:auto;">
 	<center><img style="middle;width:100%;height:100%" src="{{ site.baseurl }}freefood_network.jpg"></center>
 </div>
 
